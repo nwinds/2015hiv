@@ -1,13 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  detail: MyText
-  icon_url: MyString
+  id: 1
+  name: Lorem Ipsum
+  detail: Wibbles are fun!
+  icon_url: lorem.jpg
   price: 9.99
 
 two:
-  name: MyString
+  id: 2
+  name: MyProduct
   detail: MyText
-  icon_url: MyString
+  icon_url: MyString.jpg
   price: 9.99
+
+ruby:
+  id: 3
+  name: Programming Ruby 1.9
+  detail: Ruby is the fastest growing and most exciting dynamic language out there. If you need to get working programs delivered fast
+  icon_url: ruby.jpg
+  price: 49.50

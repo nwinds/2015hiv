@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Comments Dashboard</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Commenter</th>
+      <th>Body</th>
+      <th>ProductID</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+    <%= render :partial => "entry", :locals => { :comment => comment } %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Comment', new_comment_path %> | 
+<%= link_to("Back to Products", products_path) %>
