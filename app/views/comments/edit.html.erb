@@ -1,6 +1,38 @@
 <h1>Editing Comment</h1>
+<%= form_for(edit_product_comment_path(@comment.product, @comment)) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this @comment from being saved:</h2>
 
-<%= render :partial => "form", :locals => { :comment => @comment } %>
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= link_to 'Show', @comment %> |
-<%= link_to 'Back', comments_path %>
+  <div class="field">
+    <%= f.label :commenter %><br>
+    <%= f.text_field :commenter , :value => @comment.commenter %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body, :value => @comment.body %>
+  </div>
+    <div class="field">
+    <%= f.label :product_id %><br>
+    <%= f.hidden_field :product_id, :value => @product_id %>
+  </div>
+  <div class="field">
+		<%= f.label :comment %><br>
+	  <%= f.hidden_field :comment, :value => @comment %>
+  </div>
+  <div class="actions">
+  <!-- :comment => @comment, -->
+    <%= f.submit "commit", :action => "update" %>
+  </div>
+<% end %>
+
+<%= link_to 'Show Prev', product_comment_path(@comment.product, @comment) %> |
+<%= link_to 'Back', products_path(@comment.product) %>

@@ -21,6 +21,21 @@ class CommentsController < ApplicationController
   def edit
   end
 
+  # # PATCH/PUT /comments/1/edit
+  # # PATCH/PUT /comments/1.json/edit
+  # def commit
+  #   respond_to do |format|
+  #     if @comment.update(comment_params)
+  #       format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @comment }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @comment.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
+
   # POST /comments
   # POST /comments.json
   def create
@@ -41,8 +56,10 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
+    # params.require(params[:comment]).permit(params[:commenter], params[:body], params[:product_id])
+
     respond_to do |format|
-      if @comment.update(comment_params)
+      if @comment.update(params.require(params[:comment]).permit(params[:commenter], params[:body], params[:product_id]))
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @comment }
       else
@@ -52,7 +69,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  # DELETE /comments/1
+  # DELETE /comments/1cd 
   # DELETE /comments/1.json
   def destroy
     @product = Product.find(params[:product_id])

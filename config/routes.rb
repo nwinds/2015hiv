@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :comments
+      match 'comments/:id/edit', to: 'comments#update', via: [:post]
   end
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
