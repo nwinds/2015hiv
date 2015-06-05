@@ -55,15 +55,18 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
+  # can only update body(auther and ids cannot be modified currently)
   def update
-    # params.require(params[:comment]).permit(params[:commenter], params[:body], params[:product_id])
-
+    @product = Product.find(params[:product_id])
+    # order = Comment.find(params[:id])
+    # @comment = Comment.find(params[:comment])
+    # Comment.update(params[:id], :commenter => params[:commenter], :body => params[:body])
     respond_to do |format|
-      if @comment.update(params.require(params[:comment]).permit(params[:commenter], params[:body], params[:product_id]))
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
+      if Comment.update(params[:id], :body => params[:body])
+        format.html { redirect_to @product, notice: 'Comment was successfully updated.' }
+        format.json { render :show, status: :updated, location: @product }
       else
-        format.html { render :edit }
+        format.html { render :edit, notice: 'Comment failed to update!' }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

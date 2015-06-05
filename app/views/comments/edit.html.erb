@@ -1,8 +1,8 @@
 <h1>Editing Comment</h1>
-<%= form_for(edit_product_comment_path(@comment.product, @comment)) do |f| %>
+<%= form_for(edit_product_comment_path(@comment.product, @comment), :actions => 'update') do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this @comment from being saved:</h2>
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
       <ul>
       <% @comment.errors.full_messages.each do |message| %>
@@ -14,23 +14,24 @@
 
   <div class="field">
     <%= f.label :commenter %><br>
-    <%= f.text_field :commenter , :value => @comment.commenter %>
+	<%= f.hidden_field :commenter, :value => @comment.commenter %>
+	<p><%= @comment.commenter %><br></p>
   </div>
   <div class="field">
     <%= f.label :body %><br>
-    <%= f.text_area :body, :value => @comment.body %>
+    <%= f.text_area :body, :name => 'body', :value => @comment.body %>
   </div>
     <div class="field">
     <%= f.label :product_id %><br>
-    <%= f.hidden_field :product_id, :value => @product_id %>
+    <%= f.hidden_field :product_id, :value => @comment.product %>
   </div>
   <div class="field">
-		<%= f.label :comment %><br>
-	  <%= f.hidden_field :comment, :value => @comment %>
+		<%= f.label :comment_id %><br>
+	  <%= f.hidden_field :comment_id, :value => @comment %>
   </div>
   <div class="actions">
   <!-- :comment => @comment, -->
-    <%= f.submit "commit", :action => "update" %>
+    <%= f.submit %>
   </div>
 <% end %>
 

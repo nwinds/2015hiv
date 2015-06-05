@@ -4,10 +4,10 @@
           <%= image_tag(product.icon_url, :class => 'list_image') %>
         </td>
         <td class="list_description">
-          <dl>
-            <dt><%= product.name %></dt>
-            <dd><%= truncate(strip_tags(product.detail), :length => 80) %></dd>
-          </dl>
+            <%= product.name %>
+        </td>
+        <td class="list_description">
+           <%= truncate(strip_tags(product.detail), :length => 80) %>
         </td>
         <td class="price_line"><%= number_to_currency(product.price, :unit=>"￥") %></td>
           
