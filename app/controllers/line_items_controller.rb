@@ -26,7 +26,7 @@ class LineItemsController < ApplicationController
   def create
     @wishilist = current_wishlist
     product = Product.find(params[:product_id]) # product_id is passed by button
-    @line_item = @wishilist.line_items.build(:product => product) # create a product found before
+    @line_item = @wishilist.add_product(product.id) # create a product found before
 
     respond_to do |format|
       if @line_item.save

@@ -11,7 +11,10 @@
 <ul>
 	<% @wishlist.line_items.each do |item| %>
 	<!-- need adding wishlist's item CRUD latter -->
-		<li><%= item.product.name %></li>
+		<li>
+			<%= item.quantity %> &times;
+			<%= item.product.name %>
+		</li>
 	<% end %>
 </ul>
 	
