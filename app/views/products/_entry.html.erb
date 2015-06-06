@@ -9,7 +9,11 @@
         <td class="list_description">
            <%= truncate(strip_tags(product.detail), :length => 80) %>
         </td>
-        <td class="price_line"><%= number_to_currency(product.price, :unit=>"￥") %></td>
+        <td class="price_line"><span>
+        <%= number_to_currency(product.price, :unit=>"￥") %>
+        </span>
+        <%= button_to 'Add to Wishlist', line_items_path(product) %>
+        </td>
           
           <td class="list_actions">
             <%= link_to 'Show', product %><br/>
@@ -20,8 +24,7 @@
           <td class="list_actions">
             <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
           </td>
-              
-        <!-- </td> -->
+
       </tr>
           
       </div>

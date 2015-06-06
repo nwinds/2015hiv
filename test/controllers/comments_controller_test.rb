@@ -20,10 +20,10 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "should create comment" do
     assert_difference('Comment.count') do
-      post :create, comment: { body: @comment.body, commenter: @comment.commenter, product_id: @comment.product_id }
+      post :create, comment: { body: @comment.body, commenter: @comment.commenter, :product_id => (:one) }
     end
 
-    assert_redirected_to comment_path(assigns(:comment))
+    assert_redirected_to products_path(assigns(:comment).product)
   end
 
   test "should show comment" do
