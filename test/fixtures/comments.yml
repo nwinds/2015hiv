@@ -3,14 +3,14 @@
 one:
   commenter: commentStr1
   body: text should be more than 15 words
-  product_id: 1
+  product: MyProduct
 
 two:
   commenter: commentStr2
   body: and should be less than 2 hundred words
-  product_id: 2
+  product: MyProduct
 
 three:
   commenter: commentStr3
   body: this is for product specified
-  product: MyProduct
+  product: Lorem Ipsum

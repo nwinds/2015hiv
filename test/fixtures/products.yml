@@ -4,7 +4,7 @@ one:
   id: 1
   name: Lorem Ipsum
   detail: Wibbles are fun!
-  icon_url: lorem.jpg
+  icon_url: locdrem.jpg
   price: 9.99
 
 two:

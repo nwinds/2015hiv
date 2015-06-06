@@ -21,21 +21,6 @@ class CommentsController < ApplicationController
   def edit
   end
 
-  # # PATCH/PUT /comments/1/edit
-  # # PATCH/PUT /comments/1.json/edit
-  # def commit
-  #   respond_to do |format|
-  #     if @comment.update(comment_params)
-  #       format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @comment }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @comment.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-
   # POST /comments
   # POST /comments.json
   def create
@@ -58,9 +43,6 @@ class CommentsController < ApplicationController
   # can only update body(auther and ids cannot be modified currently)
   def update
     @product = Product.find(params[:product_id])
-    # order = Comment.find(params[:id])
-    # @comment = Comment.find(params[:comment])
-    # Comment.update(params[:id], :commenter => params[:commenter], :body => params[:body])
     respond_to do |format|
       if Comment.update(params[:id], :body => params[:body])
         format.html { redirect_to @product, notice: 'Comment was successfully updated.' }

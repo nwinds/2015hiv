@@ -3,6 +3,8 @@ require 'test_helper'
 class CommentsControllerTest < ActionController::TestCase
   setup do
     @comment = comments(:one)
+    # @product = products(:two)
+    # @product = products(:two)
   end
 
   test "should get index" do
@@ -35,7 +37,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "should update comment" do
-    patch :update, id: @comment, comment: { body: @comment.body, commenter: @comment.commenter, product_id: @comment.product_id }
+    patch :update, id: @comment, comment: { body: @comment.body, commenter: @comment.commenter, product_id: @product }
     assert_redirected_to comment_path(assigns(:comment))
   end
 
@@ -44,6 +46,6 @@ class CommentsControllerTest < ActionController::TestCase
       delete :destroy, id: @comment
     end
 
-    assert_redirected_to comments_path
+    assert_redirected_to products_path(@product)
   end
 end
