@@ -4,4 +4,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   Encoding.default_internal="UTF-8"
+
+
+private
+
+	# to find a wishlist if exists, otherwise, create one
+	def current_wishlist
+		Wishlist.find(session[:wishlist_id])
+	rescue ActiveRecord::RecordNotFound
+		wishlist = Wishlist.create
+		session[:wishlist_id] = wishlist.id
+		wishlist	
+	end
 end
