@@ -56,15 +56,26 @@ class WishlistsController < ApplicationController
   def destroy
     @wishlist.destroy
     respond_to do |format|
-      format.html { redirect_to wishlists_url, notice: 'Wishlist was successfully destroyed.' }
+      format.html { redirect_to products_url, notice: 'Wishlist was successfully destroyed. Back to Product list.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    # Improved with wrong wishlist id handle
     def set_wishlist
-      @wishlist = Wishlist.find(params[:id])
+      begin
+        @wishlist = Wishlist.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        logger.error "Attempt to access invalid wishlist #{params[:id]}"
+        redirect_to products_path, notice: "Invalid wishlist"
+      else
+        respond_to do |format|
+          format.html {render :show} # show.html.erb
+          format.json {render json: @wishlist}
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
