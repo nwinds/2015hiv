@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<h1>line_items Show</h1>
+</head>
+<body>
+	
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @line_item.product_id %>
+</p>
+
+<p>
+  <strong>Wishlist:</strong>
+  <%= @line_item.wishlist_id %>
+</p>
+
+<%= link_to 'Edit', edit_line_item_path(@line_item) %> |
+<%= link_to 'Back', line_items_path %>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<p id="notice"><%= notice %></p>
+<section>
+<h2>Your Wishlist</h2>
+<ul>
+	<% @wishlist.line_items.each do |item| %>
+	<!-- need adding wishlist's item CRUD latter -->
+		<li><%= item.product.name %></li>
+	<% end %>
+</ul>
+	
+</section>
+<%= link_to 'Edit', edit_wishlist_path(@wishlist) %> |
+<%= link_to 'Back', wishlists_path %>
+	
+</body>
+</html>
