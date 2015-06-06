@@ -12,7 +12,7 @@
         <td class="price_line"><span>
         <%= number_to_currency(product.price, :unit=>"￥") %>
         </span>
-        <%= button_to 'Add to Wishlist', line_items_path(product) %>
+        <%= button_to 'Add to Wishlist', line_items_path(:product_id => product) %>
         </td>
           
           <td class="list_actions">
