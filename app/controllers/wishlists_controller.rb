@@ -54,9 +54,13 @@ class WishlistsController < ApplicationController
   # DELETE /wishlists/1
   # DELETE /wishlists/1.json
   def destroy
+    @wishlist = current_wishlist
     @wishlist.destroy
+    # use session to 'know' if there is a wishlist or not
+    session[:wishlist_id] = nil # 'destroy in db, empty in session'
+
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Wishlist was successfully destroyed. Back to Product list.' }
+      format.html { redirect_to products_url, notice: 'Your Wishlist is emptie now. Back to Product list.' }
       format.json { head :no_content }
     end
   end

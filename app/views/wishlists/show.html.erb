@@ -8,6 +8,7 @@
 <p id="notice"><%= notice %></p>
 <section>
 <h2>Your Wishlist</h2>
+<section>
 <ul>
 	<% @wishlist.line_items.each do |item| %>
 	<!-- need adding wishlist's item CRUD latter -->
@@ -17,6 +18,9 @@
 		</li>
 	<% end %>
 </ul>
+<% button_to 'Empty Wishlist', @wishlist, method: :delete, :confirm => "Are you sure?\n(Deleting wishlist and all it's belongings?)" %>
+	
+</section>
 	
 </section>
 <%= link_to 'Edit', edit_wishlist_path(@wishlist) %> |
