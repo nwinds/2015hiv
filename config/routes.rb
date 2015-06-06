@@ -2,16 +2,17 @@ Rails.application.routes.draw do
   get 'store/index'
 
 # for testing only
-  resources :comments do
-    match 'edit', to: 'comments#update', via: :all
-    match '/comments/:id/', to: 'comments#update', via: [:post]
+  # resources :comments do
+  #   match 'edit', to: 'comments#update', via: :all
+  #   match '/comments/:id/', to: 'comments#update', via: [:post]
 
-  end
+  # end
 
 
 
   resources :products do
     resources :comments
+      # get 'comments/:id', as: :comments
       match 'comments/:id/edit', to: 'comments#update', via: [:post]
       match 'comments/:id/', to: 'comments#update', via: [:post]
   end
