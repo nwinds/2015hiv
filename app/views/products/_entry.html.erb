@@ -1,7 +1,9 @@
       <div class="product_entry">
       <tr>
         <td>
-          <%= image_tag(product.icon_url, :class => 'list_image') %>
+          <%= link_to line_items_path(:product_id => product), method: :post, data: { confirm: 'Add to wishlist?' } do %>
+          <% image_tag(product.icon_url, :border => 0, :class => "list_image")  %>
+          <% end %>
         </td>
         <td class="list_description">
             <%= product.name %>
@@ -12,7 +14,7 @@
         <td class="price_line"><span>
         <%= number_to_currency(product.price, :unit=>"￥") %>
         </span>
-        <%= button_to 'Add to Wishlist', line_items_path(:product_id => product) %>
+        <%= button_to 'Add to Wishlist', line_items_path(:product_id => product), data: { confirm: "Add to wishlist?"} %>
         </td>
           
           <td class="list_actions">
