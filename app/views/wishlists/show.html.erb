@@ -6,23 +6,51 @@
 </head>
 <body>
 <p id="notice"><%= notice %></p>
+<!-- <section> -->
 <section>
+	
 <h2>Your Wishlist</h2>
-<section>
-<ul>
+
+<table>
 	<% @wishlist.line_items.each do |item| %>
 	<!-- need adding wishlist's item CRUD latter -->
-		<li>
-			<%= item.quantity %> &times;
-			<%= item.product.name %>
-		</li>
+		<tr>
+			<td>
+				<%= link_to line_items_path(:product_id => item.product_id), method: :put do %>
+        			<%= button_to '-', :opt_code => -1 %>
+		        <% end %>
+			</td>
+			<td>
+				<%= item.quantity %> &times;
+			</td>
+			<td>				
+				<%= link_to line_items_path(:product_id => item.product_id), method: :put do %>
+						<%= button_to '+', :opt_code => 1 %>
+		        <% end %>
+			</td>
+
+			<td>
+				<%= item.product.name %>
+			</td>
+	        <td class="item_price">
+		        <span><%= number_to_currency(item.total_price, :unit=>"￥") %></span>
+ 			</td>
+			<td><%= button_to 'Remove Product'  %></td>
+		</tr>
 	<% end %>
-</ul>
-<% button_to 'Empty Wishlist', @wishlist, method: :delete, :confirm => "Are you sure?\n(Deleting wishlist and all it's belongings?)" %>
-	
+
+	<tr class="total_line">
+		<td colspan="2">Total</td>
+		<!-- use ActiveRecord -->
+		<td class="total_cell"><%= number_to_currency(@wishlist.total_price, :unit=>"￥") %></td>
+	</tr>
+</table>
+
+
+<p><%= button_to 'Empty Wishlist', @wishlist, method: :delete, data: {:confirm => "Are you sure?\n(Deleting wishlist and all it's belongings?)"} %></p>
 </section>
 	
-</section>
+<!-- </section> -->
 <%= link_to 'Edit', edit_wishlist_path(@wishlist) %> |
 <%= link_to 'Back', wishlists_path %>
 	

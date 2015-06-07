@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  
   resources :line_items
   resources :wishlists
   get 'store/index'
 
+  match 'line_items', to: 'line_items#edit', via: [:put]
 # for testing only
   # resources :comments do
   #   match 'edit', to: 'comments#update', via: :all

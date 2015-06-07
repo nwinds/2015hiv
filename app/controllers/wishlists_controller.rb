@@ -1,5 +1,5 @@
 class WishlistsController < ApplicationController
-  before_action :set_wishlist, only: [:show, :edit, :update, :destroy]
+  before_action :set_wishlist, only: [:show, :edit, :update]
 
   # GET /wishlists
   # GET /wishlists.json
@@ -55,14 +55,16 @@ class WishlistsController < ApplicationController
   # DELETE /wishlists/1.json
   def destroy
     @wishlist = current_wishlist
-    @wishlist.destroy
-    # use session to 'know' if there is a wishlist or not
-    session[:wishlist_id] = nil # 'destroy in db, empty in session'
-
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Your Wishlist is emptie now. Back to Product list.' }
-      format.json { head :no_content }
+    puts @wishlist
+    if @wishlist.destroy
+      # use session to 'know' if there is a wishlist or not
+      session[:wishlist_id] = nil # 'destroy in db, empty in session'
+      respond_to do |format|
+        format.html { redirect_to products_url, notice: 'Your Wishlist is empty now. Back to Product list.' }
+        format.json { head :no_content }
+      end
     end
+      
   end
 
   private

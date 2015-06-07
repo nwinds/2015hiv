@@ -56,14 +56,14 @@ class ProductsController < ApplicationController
   # first get the do be destroied product: delete all its comments and then delete the product
   def destroy
     # delete product's comments
-    @product.comments.each do |comment|
-      begin
-        comment.destroy
-      rescue ActiveRecord::RecordNotFound
-        logger.error "Product failed to destroy. Attempt to access invalid product#{params[:id]} comment#{params[:comment]}"
-        redirect_to @product
-      end
-    end
+    # @product.comments.each do |comment|
+    #   begin
+    #     comment.destroy
+    #   rescue ActiveRecord::RecordNotFound
+    #     logger.error "Product failed to destroy. Attempt to access invalid product#{params[:id]} comment#{params[:comment]}"
+    #     redirect_to @product
+    #   end
+    # end
 
     # delete product itself
     @product.destroy

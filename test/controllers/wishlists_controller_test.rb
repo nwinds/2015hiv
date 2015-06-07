@@ -35,7 +35,7 @@ class WishlistsControllerTest < ActionController::TestCase
   end
 
   test "should update wishlist" do
-    patch :update, id: @wishlist, wishlist: {  }
+    patch :update, id: @wishlist.to_param, wishlist: @wishlist
     assert_redirected_to wishlist_path(assigns(:wishlist))
   end
 

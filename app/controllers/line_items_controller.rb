@@ -1,5 +1,5 @@
 class LineItemsController < ApplicationController
-  before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_line_item, only: [:show, :update, :destroy]
 
   # GET /line_items
   # GET /line_items.json
@@ -35,6 +35,37 @@ class LineItemsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # POST /line_items
+  # POST /line_items.json
+  def edit
+    @wishilist = current_wishlist
+    product = Product.find(params[:product_id]) # product_id is passed by button
+    opt = params[:opt_code]
+    if opt == 1
+      @line_item = @wishilist.add_product(product.id) # create a product found before
+    else
+      @line_item = @wishilist.minus_product(product.id) # create a product found before
+    end
+    
+    if @line_item
+      respond_to do |format|
+        if @line_item.save
+          format.html { redirect_to @line_item.wishlist, notice: 'Line item was successfully decreased.' }
+          format.json { render :show, status: :created, location: @line_item }
+        else
+          format.html { redirect_to products_url, notice: "Line item cannot decrease" }
+          format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      # if no items inside a wishlist, the list will not be destroied currently!
+      respond_to do |format|
+        format.html { redirect_to @wishilist, notice: 'Line item was successfully destroyed.' }
+        format.json { head :no_content }
       end
     end
   end
