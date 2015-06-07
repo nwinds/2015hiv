@@ -1,32 +1,30 @@
-      <div class="product_entry">
-      <tr>
-        <td>
-          <%= link_to line_items_path(:product_id => product), method: :post, data: { confirm: 'Add to wishlist?' } do %>
-          <% image_tag(product.icon_url, :border => 0, :class => "list_image")  %>
-          <% end %>
+<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+      <td>
+        <%= link_to line_items_path(:product_id => product), method: :post, data: { confirm: 'Add to wishlist?' } do %>
+        <% image_tag(product.icon_url, :border => 0, :class => "list_image")  %>
+        <% end %>
+      </td>
+      <td class="list_description">
+          <h3><%= product.name %></h3>
+      </td>
+      <td class="list_description">
+         <%= truncate(strip_tags(product.detail), :length => 80) %>
+      </td>
+      <td class="price_line"><span>
+      <%= number_to_currency(product.price, :unit=>"￥") %>
+      </span>
+      <%= button_to 'Add to Wishlist', line_items_path(:product_id => product), data: { confirm: "Add to wishlist?"} %>
+      </td>
+        
+        <td class="list_actions">
+          <%= link_to 'Show', product %><br/>
         </td>
-        <td class="list_description">
-            <%= product.name %>
+        <td class="list_actions">
+          <%= link_to 'Edit', edit_product_path(product) %><br/>
         </td>
-        <td class="list_description">
-           <%= truncate(strip_tags(product.detail), :length => 80) %>
+        <td class="list_actions">
+          <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
-        <td class="price_line"><span>
-        <%= number_to_currency(product.price, :unit=>"￥") %>
-        </span>
-        <%= button_to 'Add to Wishlist', line_items_path(:product_id => product), data: { confirm: "Add to wishlist?"} %>
-        </td>
-          
-          <td class="list_actions">
-            <%= link_to 'Show', product %><br/>
-          </td>
-          <td class="list_actions">
-            <%= link_to 'Edit', edit_product_path(product) %><br/>
-          </td>
-          <td class="list_actions">
-            <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td>
 
-      </tr>
-          
-      </div>
+</tr>
+        

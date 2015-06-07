@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rec</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title>Store</title>
+  	<%= stylesheet_link_tag "scaffold" %>
+	<%= stylesheet_link_tag   :rec, :media => 'all' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  	<!-- <%= javascript_include_tag :defaults %> -->
+
+  <!-- # <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %> -->
+  <!-- # <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> -->
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
-
+<body id="store">
+	<div id="banner">
+	<!-- TODO: fix it with our logo! -->
+		<%= image_tag("todo.png") %>
+		<%= @page_title || "Product shelf" %>
+	</div>
+	<div id="columns">
+		<div id="side">
+		<!-- TODO: fix the link addr -->
+			<a href="#">Home</a><br />
+			<a href="#">F &amp Q</a><br />
+			<a href="#">News</a><br />
+			<a href="#">Contact</a><br />
+		</div>
+		<div id="main">
+			<%= yield %>			
+		</div>
+	</div>
 </body>
 </html>

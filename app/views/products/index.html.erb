@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+<div class="product_list">
+<% if notice %>
 <p id="notice"><%= notice %></p>
+<% end %>
+    
 
 <h1>Listing Products</h1>
 
@@ -20,7 +24,7 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
+</div>
+<br />
 
 <%= link_to 'New Product', new_product_path %>

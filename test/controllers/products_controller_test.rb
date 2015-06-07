@@ -15,6 +15,16 @@ class ProductsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:products)
+  # test "should get index" do
+    # get :index
+    # assert_response :success
+    assert_select '#columns #side a', :minmun => 4    # test <a> in id = columns, id = side: all fitting in at least  4
+    assert_select 'h3', 'Programming Ruby 1.9'
+    assert_select '#main .list_description', :minmun => 2  # test there are three class named entry
+    assert_select '#main .list_actions', 9  # test there are three class named entry
+    # assert_select '.price', /\uFFE5[,\d]+\.\d\d/
+  # end
+
   end
 
   test "should get new" do

@@ -39,6 +39,7 @@
 				<%= link_to line_items_path(:product_id => item.product_id), method: :delete do %>
 					<%= button_to 'Remove This Entry' %>
 		        <% end %>
+	        </td>
 		</tr>
 	<% end %>
 
@@ -48,9 +49,7 @@
 		<td class="total_cell"><%= number_to_currency(@wishlist.total_price, :unit=>"￥") %></td>
 	</tr>
 </table>
-
-
-<p><%= button_to 'Empty Wishlist', @wishlist, method: :delete, data: {:confirm => "Are you sure?\n(Deleting wishlist and all it's belongings?)"} %></p>
+	<p><%= button_to 'Empty Wishlist', @wishlist, method: :delete, data: {:confirm => "Are you sure?\n(Deleting wishlist and all it's belongings?)"} %></p>
 </section>
 	
 <!-- </section> -->

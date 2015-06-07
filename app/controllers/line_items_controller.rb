@@ -84,12 +84,16 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1.json
   def destroy
     @wishlist = current_wishlist
-    @wishlist.destroy_line_item(params[:product_id])
-    # @line_item = LineItem.find_by_product_id_and_wishlist_id(params[:product_id], params[:wishlist_id])
-    # @line_item.destroy
-    respond_to do |format|
-      format.html { redirect_to @wishlist, notice: 'Line item was successfully destroyed.' }
-      format.json { head :no_content }
+    begin
+      @wishlist.destroy_line_item(params[:product_id])
+    rescue NoMethodError
+        logger.error "Failed to destroy wishlist#{params[:id]} with invalid product_id#{params[:product_id]}."
+        redirect_to @wishlist, notice: "Line item failed to destroy."
+    else
+      respond_to do |format|
+        format.html { redirect_to @wishlist, notice: 'Line item was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 

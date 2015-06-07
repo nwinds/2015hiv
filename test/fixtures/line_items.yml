@@ -7,3 +7,7 @@ one:
 two:
   product_id: 1
   wishlist_id: 1
+
+three:
+  product_id: 2
+  wishlist_id: 1

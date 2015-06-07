@@ -3,6 +3,7 @@ require 'test_helper'
 class LineItemsControllerTest < ActionController::TestCase
   setup do
     @line_item = line_items(:one)
+    @update = line_items(:three)
   end
 
   test "should get index" do
@@ -31,18 +32,19 @@ class LineItemsControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit, id: @line_item
+    get :edit, id: @line_item, line_item: @update.to_param, product_id: @update.product_id.to_param
     assert_response :success
   end
 
   test "should update line_item" do
-    patch :update, id: @line_item, line_item: { product_id: @line_item.product_id, wishlist_id: @line_item.wishlist_id }
+    patch :update, id: @line_item, line_item: @update.to_param, product_id: @update.product_id.to_param, wishlist_id: @update.wishlist_id.to_param
     assert_redirected_to line_item_path(assigns(:line_item))
   end
 
   test "should destroy line_item" do
+    # test case is not good, line_item with the product id does not exists
     assert_difference('LineItem.count', -1) do
-      delete :destroy, id: @line_item
+      delete :destroy, id: @line_item, product_id: @line_item.product_id.to_param, wishlist_id: @line_item.wishlist_id
     end
 
     assert_redirected_to line_items_path
