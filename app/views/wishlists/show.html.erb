@@ -17,14 +17,14 @@
 		<tr>
 			<td>
 				<%= link_to line_items_path(:product_id => item.product_id), method: :put do %>
-        			<%= button_to '-', :opt_code => -1 %>
+        			<%= button_to '-' %>
 		        <% end %>
 			</td>
 			<td>
 				<%= item.quantity %> &times;
 			</td>
 			<td>				
-				<%= link_to line_items_path(:product_id => item.product_id), method: :put do %>
+				<%= link_to line_items_path(:product_id => item.product_id), method: :post do %>
 						<%= button_to '+', :opt_code => 1 %>
 		        <% end %>
 			</td>
@@ -35,7 +35,10 @@
 	        <td class="item_price">
 		        <span><%= number_to_currency(item.total_price, :unit=>"￥") %></span>
  			</td>
-			<td><%= button_to 'Remove Product'  %></td>
+			<td>
+				<%= link_to line_items_path(:product_id => item.product_id), method: :delete do %>
+					<%= button_to 'Remove This Entry' %>
+		        <% end %>
 		</tr>
 	<% end %>
 

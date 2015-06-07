@@ -18,10 +18,17 @@ class Wishlist < ActiveRecord::Base
 				current_item.quantity -= 1
 				return current_item
 			else
+				current_item.quantity = 0
 				current_item.destroy
 			end
 		return nil
 		end
+	end
+
+	def destroy_line_item(product_id)
+		current_item = line_items.find_by_product_id(product_id)
+		current_item.quantity = 0
+		current_item.destroy		
 	end
 
 	def total_price

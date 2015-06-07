@@ -1,5 +1,5 @@
 class LineItemsController < ApplicationController
-  before_action :set_line_item, only: [:show, :update, :destroy]
+  before_action :set_line_item, only: [:show, :update]
 
   # GET /line_items
   # GET /line_items.json
@@ -17,16 +17,12 @@ class LineItemsController < ApplicationController
     @line_item = LineItem.new
   end
 
-  # GET /line_items/1/edit
-  def edit
-  end
-
   # POST /line_items
   # POST /line_items.json
   def create
-    @wishilist = current_wishlist
+    @wishlist = current_wishlist
     product = Product.find(params[:product_id]) # product_id is passed by button
-    @line_item = @wishilist.add_product(product.id) # create a product found before
+    @line_item = @wishlist.add_product(product.id) # create a product found before
 
     respond_to do |format|
       if @line_item.save
@@ -44,12 +40,12 @@ class LineItemsController < ApplicationController
   def edit
     @wishilist = current_wishlist
     product = Product.find(params[:product_id]) # product_id is passed by button
-    opt = params[:opt_code]
-    if opt == 1
-      @line_item = @wishilist.add_product(product.id) # create a product found before
-    else
+    # opt = params[:opt_code]
+    # if opt == 1
+      # @line_item = @wishilist.add_product(product.id) # create a product found before
+    # else
       @line_item = @wishilist.minus_product(product.id) # create a product found before
-    end
+    # end
     
     if @line_item
       respond_to do |format|
@@ -87,9 +83,12 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
-    @line_item.destroy
+    @wishlist = current_wishlist
+    @wishlist.destroy_line_item(params[:product_id])
+    # @line_item = LineItem.find_by_product_id_and_wishlist_id(params[:product_id], params[:wishlist_id])
+    # @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
+      format.html { redirect_to @wishlist, notice: 'Line item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

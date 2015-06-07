@@ -55,7 +55,7 @@ class WishlistsController < ApplicationController
   # DELETE /wishlists/1.json
   def destroy
     @wishlist = current_wishlist
-    puts @wishlist
+    # puts @wishlist
     if @wishlist.destroy
       # use session to 'know' if there is a wishlist or not
       session[:wishlist_id] = nil # 'destroy in db, empty in session'

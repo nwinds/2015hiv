@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'store/index'
 
   match 'line_items', to: 'line_items#edit', via: [:put]
+  match 'line_items', to: 'line_items#destroy', via: [:delete]
+
 # for testing only
   # resources :comments do
   #   match 'edit', to: 'comments#update', via: :all
