@@ -1,0 +1,31 @@
+		<tr>
+<!-- 			<td>
+				<%= link_to line_items_path(:product_id => item.product_id), method: :put do %>
+        			<%= button_to '-' %>
+		        <% end %>
+			</td> -->
+			<td>
+				<%= line_item.quantity %> &times;
+			</td>
+<!-- 			<td>				
+				<%= link_to line_items_path(:product_id => item.product_id), method: :post do %>
+						<%= button_to '+', :opt_code => 1 %>
+		        <% end %>
+			</td> -->
+
+			<td>
+				<%= line_item.product.name %>
+			</td>
+	        <td class="item_price">
+		        <span><%= number_to_currency(line_item.total_price, :unit=>"￥") %></span>
+ 			</td>
+
+
+
+ 			
+<!-- 			<td>
+				<%= link_to line_items_path(:product_id => item.product_id), method: :delete do %>
+					<%= button_to 'Remove This Entry' %>
+		        <% end %>
+	        </td> -->
+		</tr>
