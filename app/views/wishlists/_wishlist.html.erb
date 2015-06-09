@@ -1,0 +1,10 @@
+<div class="wishlist_title"><h2>Your Wishlist</h2></div>
+<table>
+	<%= render(wishlist.line_items) %>
+	<tr class="total_line">
+		<td colspan="2">Total</td>
+		<!-- use ActiveRecord -->
+		<td class="total_cell"><%= number_to_currency(wishlist.total_price, :unit=>"￥") %></td>
+	</tr>
+</table>
+<p><%= button_to 'Empty Wishlist', wishlist, method: :delete, data: {:confirm => "Are you sure?\n(Deleting wishlist and all it's belongings?)"} %></p>

@@ -1,0 +1,1 @@
+page_replace_html('wishlist', render(@wishlist))
