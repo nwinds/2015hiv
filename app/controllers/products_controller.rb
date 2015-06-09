@@ -66,6 +66,7 @@ class ProductsController < ApplicationController
     # end
 
     # delete product itself
+    
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
