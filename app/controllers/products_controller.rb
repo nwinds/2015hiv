@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :set_wishlist, only: [:index, :show, :edit]
+  before_action :set_wishlist, only: [:index, :show, :edit, :new]
 
   # GET /products
   # GET /products.json

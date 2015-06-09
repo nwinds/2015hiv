@@ -13,7 +13,7 @@
       <td class="price_line"><span>
       <%= number_to_currency(product.price, :unit=>"￥") %>
       </span>
-      <%= button_to 'Add to Wishlist', line_items_path(:product_id => product), data: { confirm: "Add to wishlist?"} %>
+      <%= button_to 'Want!', line_items_path(:product_id => product), :remote => true, data: { confirm: "Add to wishlist?"} %>
       </td>
         
         <td class="list_actions">
