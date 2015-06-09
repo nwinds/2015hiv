@@ -53,6 +53,7 @@ class WishlistsController < ApplicationController
 
   # DELETE /wishlists/1
   # DELETE /wishlists/1.json
+  # 事实上这里应该重定向到用户当前所在页面（不过现在就不深究了）
   def destroy
     @wishlist = current_wishlist
     # puts @wishlist
@@ -61,6 +62,7 @@ class WishlistsController < ApplicationController
       session[:wishlist_id] = nil # 'destroy in db, empty in session'
       respond_to do |format|
         format.html { redirect_to products_url, notice: 'Your Wishlist is empty now. Back to Product list.' }
+        # format.js
         format.json { head :no_content }
       end
     end

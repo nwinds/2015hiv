@@ -7,4 +7,5 @@
 		<td class="total_cell"><%= number_to_currency(wishlist.total_price, :unit=>"￥") %></td>
 	</tr>
 </table>
-<p><%= button_to 'Empty Wishlist', wishlist, method: :delete, data: {:confirm => "Are you sure?\n(Deleting wishlist and all it's belongings?)"} %></p>
+<p><%= button_to 'Empty Wishlist', wishlist, method: :delete %></p>
+<!-- <p><%= button_to 'Empty Wishlist', wishlist, remote: true, method: :delete %></p> -->

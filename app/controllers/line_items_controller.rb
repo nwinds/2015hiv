@@ -41,12 +41,7 @@ class LineItemsController < ApplicationController
   def edit
     @wishilist = current_wishlist
     product = Product.find(params[:product_id]) # product_id is passed by button
-    # opt = params[:opt_code]
-    # if opt == 1
-      # @line_item = @wishilist.add_product(product.id) # create a product found before
-    # else
-      @line_item = @wishilist.minus_product(product.id) # create a product found before
-    # end
+    @line_item = @wishilist.minus_product(product.id) # create a product found before
     
     if @line_item
       respond_to do |format|
@@ -89,10 +84,11 @@ class LineItemsController < ApplicationController
       @wishlist.destroy_line_item(params[:product_id])
     rescue NoMethodError
         logger.error "Failed to destroy wishlist#{params[:id]} with invalid product_id#{params[:product_id]}."
-        redirect_to @wishlist, notice: "Line item failed to destroy."
+        redirect_to products_url, notice: "Line item failed to destroy."
     else
       respond_to do |format|
-        format.html { redirect_to @wishlist, notice: 'Line item was successfully destroyed.' }
+        format.html { redirect_to products_url, notice: 'Line item was successfully destroyed.' }
+        format.js
         format.json { head :no_content }
       end
     end
