@@ -1,16 +1,18 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_wishlist, only: [:index, :show, :edit]
 
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
-    @wishlist = current_wishlist
+    # set_wishlist()
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    # set_wishlist()
   end
 
   # GET /products/new
@@ -20,6 +22,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    # set_wishlist()
   end
 
   # POST /products
@@ -67,10 +70,14 @@ class ProductsController < ApplicationController
     # end
 
     # delete product itself
-    @product.destroy
     respond_to do |format|
+      if @product.destroy
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
+      else
+        format.html { redirect_to products_url, notice: 'Product failed to destroy.' }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -78,7 +85,7 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
-    end
+    end   
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params

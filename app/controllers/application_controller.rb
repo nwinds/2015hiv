@@ -5,7 +5,10 @@ class ApplicationController < ActionController::Base
 
   Encoding.default_internal="UTF-8"
 
-
+protected
+    def set_wishlist
+      @wishlist = current_wishlist
+    end
 private
 
 	# to find a wishlist if exists, otherwise, create one
