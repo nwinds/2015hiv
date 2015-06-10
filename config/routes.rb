@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
   
   resources :orders
-  resources :line_items
+
+  resources :line_items do
+    collection do
+      # delete 'destroy'
+      post 'minus_down', to: 'line_items#minus_down'
+    end
+    # match 'destroy', to: 'line_items#destroy', via: [:delete]
+    # delete 'destroy', to: 'line_items#destroy'
+  end
+
   resources :wishlists
   get 'store/index'
 
-  match 'line_items', to: 'line_items#edit', via: [:put]
+  # match 'line_items', to: 'line_items#edit', via: [:put]
   match 'line_items', to: 'line_items#destroy', via: [:delete]
+
 
 # for testing only
   # resources :comments do

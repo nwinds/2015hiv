@@ -19,6 +19,7 @@ class LineItemsController < ApplicationController
 
   # POST /line_items
   # POST /line_items.json
+  # add up item counts in wishlist
   def create
     @wishlist = current_wishlist
     product = Product.find(params[:product_id]) # product_id is passed by button
@@ -26,7 +27,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to products_url, notice: 'Line item was successfully added in.' }
+        format.html { redirect_to products_url, notice: 'One Line item was successfully added in.' }
         format.js
         format.json { render :show, status: :created, location: @line_item }
       else
@@ -39,26 +40,32 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def edit
-    @wishilist = current_wishlist
+  end
+
+  # POST /line_items/:id/minus_down
+  # POST /line_items/:id/minus_down.json
+  def minus_down
+    @wishlist = current_wishlist
     product = Product.find(params[:product_id]) # product_id is passed by button
-    @line_item = @wishilist.minus_product(product.id) # create a product found before
-    
+    @line_item = @wishlist.minus_product(product.id) # create a product found before
     if @line_item
-      respond_to do |format|
-        if @line_item.save
-          format.html { redirect_to @line_item.wishlist, notice: 'Line item was successfully decreased.' }
-          format.json { render :show, status: :created, location: @line_item }
-        else
-          format.html { redirect_to products_url, notice: "Line item cannot decrease" }
-          format.json { render json: @line_item.errors, status: :unprocessable_entity }
+            
+        respond_to do |format|
+          if @line_item.save
+            format.html { redirect_to products_url, notice: 'One Line item was successfully removed.' }
+            # format.js
+            format.json { render :show, status: :created, location: @line_item }
+          else
+            format.html { render :new }
+            format.json { render json: @line_item.errors, status: :unprocessable_entity }
+          end
         end
-      end
     else
-      # if no items inside a wishlist, the list will not be destroied currently!
-      respond_to do |format|
-        format.html { redirect_to @wishilist, notice: 'Line item was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+        respond_to do |format|
+            format.html { redirect_to products_url, notice: 'One Line item was successfully removed.' }
+            # format.js
+            format.json { render :show, status: :created, location: @line_item }
+        end        
     end
   end
 

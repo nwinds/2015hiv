@@ -39,7 +39,7 @@ class LineItemsControllerTest < ActionController::TestCase
 
   test "should get edit" do
     get :edit, id: @line_item, line_item: @update.to_param, product_id: @update.product_id.to_param
-    assert_redirected_to wishlist_path(@line_item.wishlist)
+    assert_response :success
   end
 
   test "should update line_item" do

@@ -1,0 +1,1 @@
+$('#wishlist').html '<%= j render(@wishlist) %>'
