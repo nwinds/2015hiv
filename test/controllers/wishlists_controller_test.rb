@@ -36,12 +36,14 @@ class WishlistsControllerTest < ActionController::TestCase
 
   test "should update wishlist" do
     patch :update, id: @wishlist.to_param, wishlist: @wishlist
-    assert_redirected_to wishlist_path(assigns(:wishlist))
+    # assert_redirected_to wishlist_path(assigns(:wishlist))
+    assert_response :success
   end
+
 
   test "should destroy wishlist" do
     # wishlist shall only change session without really delete wishlist in ActiveView
-    assert_difference('Wishlist.count', 0) do
+    assert_difference('Wishlist.count', -1) do
       session[:wishlist] = @wishlist.id
       delete :destroy, id: @wishlist.to_param
     end

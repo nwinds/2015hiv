@@ -60,12 +60,12 @@ class WishlistsController < ApplicationController
     if @wishlist.destroy
       # use session to 'know' if there is a wishlist or not
       session[:wishlist_id] = nil # 'destroy in db, empty in session'
+    end
       respond_to do |format|
         format.html { redirect_to products_url, notice: 'Your Wishlist is empty now. Back to Product list.' }
         # format.js
         format.json { head :no_content }
       end
-    end
       
   end
 
