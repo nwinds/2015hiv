@@ -20,3 +20,10 @@ three:
   detail: alias is Ruby
   icon_url: ruby.jpg
   price: 49.50
+
+LineItemProduct_four:
+  id: 4
+  name: product 4 - LineItemsControllerTest
+  detail: for LineItemsControllerTest's test_should_create_line_item
+  icon_url: lineitem.jpg
+  price: 4.00
