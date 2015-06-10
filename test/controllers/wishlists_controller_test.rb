@@ -2,14 +2,16 @@ require 'test_helper'
 
 class WishlistsControllerTest < ActionController::TestCase
   setup do
+    # prepare_data()
     @wishlist = wishlists(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:wishlists)
-  end
+  # no method support without authority
+  # test "should get index" do
+  #   get :index
+  #   assert_response :success
+  #   assert_not_nil assigns(:wishlists)
+  # end
 
   test "should get new" do
     get :new
@@ -41,14 +43,20 @@ class WishlistsControllerTest < ActionController::TestCase
   end
 
 
-  test "should destroy wishlist" do
+  test "should empty wishlist without destroy it" do
     # wishlist shall only change session without really delete wishlist in ActiveView
-    assert_difference('Wishlist.count', -1) do
+    assert_difference('Wishlist.count', 0) do
       session[:wishlist] = @wishlist.id
       delete :destroy, id: @wishlist.to_param
     end
 
     # assert_difference(session[:wishlist], 0)
     assert_redirected_to products_path
+  end
+
+private
+  def prepare_data()
+    Wishlist.new(wishlists(:one))
+    Wishlist.new(wishlists(:two))
   end
 end
