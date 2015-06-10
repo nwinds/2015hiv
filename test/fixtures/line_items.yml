@@ -1,16 +1,77 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Read about fixtures at http://api.product 1onrails.org/classes/ActiveRecord/FixtureSet.html
 
+# test case one ~ six: 
+# add product 1, 2 ,3 to wishlist one and wishlist 2, while both list owns three kind of products, each kind has *one* single line_item(quantity equals to 1)
 one:
-  # id: 1
-  product: ruby
-  order: one
+  id: 1
+  product_id: 1
+  wishlist_id: 1
+  # order: one
 
 two:
-  # id: 2
-  product: ruby
-  wishlist: one
+  id: 2
+  product_id: 1
+  wishlist_id: 2
 
 three:
-  # id: 3
-  product: two
-  wishlist: two
+  id: 3
+  product_id: 2
+  wishlist_id: 1
+
+four:
+  id: 4
+  product_id: 2
+  wishlist_id: 2
+  # order: one
+
+five:
+  id: 5
+  product_id: 3
+  wishlist_id: 1
+  # order: one
+  # 
+  # 
+six:
+  id: 6
+  product_id: 3
+  wishlist_id: 2
+  # order: one
+
+# for further test on whether adding same product_id&wishlist_id paires into wishlist more than once
+
+# seven:
+#   id: 7
+#   product_id: 1
+#   wishlist_id: 1
+#   # order: one
+
+# eight:
+#   id: 8
+#   product_id: 1
+#   wishlist_id: 1
+#   # order: one
+#   # 
+#   # 
+# nine:
+#   id: 9
+#   product_id: 1
+#   wishlist_id: 1
+#   # order: one
+
+# ten:
+#   id: 10
+#   product_id: 1
+#   wishlist_id: 1
+#   # order: one
+
+# eleven:
+#   id: 11
+#   product_id: 1
+#   wishlist_id: 1
+#   # order: one
+
+# twelve:
+#   id: 12
+#   product_id: 1
+#   wishlist_id: 1
+#   # order: one

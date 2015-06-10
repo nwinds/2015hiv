@@ -11,18 +11,19 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "product price must be positive" do
-  	product = Product.new(:name => 'My book Name',
-					  	  :detail => 'ddd',
+  	product = Product.new( 
+                :name     => 'product_test case',
+					  	  :detail   => 'test:units test case for create',
 					  	  :icon_url => 'ii.jpg',
-                :price => 1)
+                :price    => 1.00 )
   	product.price = -1
     assert(product.invalid?, "must be greater than or equal to 0.01")
 	
-	product.price = 0
-    assert(product.invalid?, "must be greater than or equal to 0.01")
+  	product.price = 0
+      assert(product.invalid?, "must be greater than or equal to 0.01")
 
-	product.price = 1
-    assert product.valid?
+  	product.price = 1
+      assert product.valid?
   end
 
   def new_product(icon_url)
@@ -46,7 +47,7 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "product is not valid without a unique name" do
-  	product = Product.new(:name => products(:ruby).name,
+  	product = Product.new(:name => products(:one).name,
 					  	  :detail => 'ddd',
 					  	  :price => 1.0,
 					  	  :icon_url => 'ii.jpg')
@@ -54,7 +55,7 @@ class ProductTest < ActiveSupport::TestCase
   end  
 
   test "product is not valid without a unique name - i18n" do
-  	product = Product.new(:name => products(:two).name,
+  	product = Product.new(:name => products(:one).name,
 					  	  :detail => 'ddd',
 					  	  :price => 1.0,
 					  	  :icon_url => 'fred.jpg')

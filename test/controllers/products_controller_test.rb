@@ -2,12 +2,13 @@ require 'test_helper'
 
 class ProductsControllerTest < ActionController::TestCase
   setup do
+    # prepare_data()
     @product = products(:one)
     @update = {
-      :name     => 'Lorem Ipsum more',
-      :detail   => 'Wibbles are fun!',
-      :icon_url => 'lorem.jpg',
-      :price    => 19.95
+      :name     => 'product_controller_test case',
+      :detail   => 'test:functionalsproduct updated test case',
+      :icon_url => 'todo.jpg',
+      :price    => 10.02
     }
   end
 
@@ -19,7 +20,7 @@ class ProductsControllerTest < ActionController::TestCase
     # get :index
     # assert_response :success
     assert_select '#columns #side a', :minmun => 4    # test <a> in id = columns, id = side: all fitting in at least  4
-    assert_select 'h3', 'Programming Ruby 1.9'
+    assert_select 'h3', 'product 1'
     assert_select '#main .list_description', :minmun => 2  # test there are three class named entry
     assert_select '#main .list_actions', 9  # test there are three class named entry
     # assert_select '.price', /\uFFE5[,\d]+\.\d\d/
@@ -61,5 +62,12 @@ class ProductsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to products_path
+  end
+
+private
+  def prepare_data()
+    Product.new(products(:one))
+    Product.new(products(:two))
+    Product.new(products(:three))
   end
 end
