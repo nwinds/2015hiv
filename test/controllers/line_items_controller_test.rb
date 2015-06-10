@@ -24,7 +24,6 @@ class LineItemsControllerTest < ActionController::TestCase
     # use a stupid 1:run 2:quote way to prepare data
     # Product.where(:product_id => 4).destroy
     # Product.new(products(:LineItemProduct_four))
-
     product = products(:LineItemProduct_four)
     assert_difference('LineItem.count') do
       post :create, :product_id => product
@@ -40,7 +39,7 @@ class LineItemsControllerTest < ActionController::TestCase
 
   test "should get edit" do
     get :edit, id: @line_item, line_item: @update.to_param, product_id: @update.product_id.to_param
-    assert_response :success
+    assert_redirected_to wishlist_path(@line_item.wishlist)
   end
 
   test "should update line_item" do
