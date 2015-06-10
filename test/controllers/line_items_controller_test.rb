@@ -23,7 +23,7 @@ class LineItemsControllerTest < ActionController::TestCase
       post :create, :product_id => product
     end
 
-    assert_redirected_to wishlist_path(assigns(:line_item).wishlist)
+    assert_redirected_to products_url
   end
 
   test "should show line_item" do
@@ -47,6 +47,6 @@ class LineItemsControllerTest < ActionController::TestCase
       delete :destroy, id: @line_item, product_id: @line_item.product_id.to_param, wishlist_id: @line_item.wishlist_id
     end
 
-    assert_redirected_to line_items_path
+    assert_redirected_to products_url
   end
 end

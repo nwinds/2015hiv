@@ -81,7 +81,7 @@ class LineItemsController < ApplicationController
   def destroy
     @wishlist = current_wishlist
     begin
-      @wishlist.destroy_line_item(params[:product_id])
+      @wishlist.destroy_line_item(params[:product_id], @wishlist)
     rescue NoMethodError
         logger.error "Failed to destroy wishlist#{params[:id]} with invalid product_id#{params[:product_id]}."
         redirect_to products_url, notice: "Line item failed to destroy."

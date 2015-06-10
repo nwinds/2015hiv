@@ -166,3 +166,36 @@
   border-bottom: 1px dotted #595;
   margin-bottom: 10px;
 }
+
+/* style for order form */
+.order_form fieldset {
+  background: #efe;
+}
+
+.order_form legend {
+  color: #dfd;
+  background: #141;
+  font-family: sans-serif;
+  padding: 0.2em, 1em;
+}
+
+.order_form label {
+  width: 5em;
+  float: left;
+  text-align: right;
+  padding-top: 0.2em;
+  margin-right: 0.1em;
+  display: block;
+}
+
+.order_form select, .order_form textarea, .order_form input {
+  margin-left: 0.5em;
+}
+
+.order_form .submit {
+  margin-left: 4em;
+}
+
+.order_form div {
+  margin: 0.5em 0;
+}

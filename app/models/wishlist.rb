@@ -25,10 +25,12 @@ class Wishlist < ActiveRecord::Base
 		end
 	end
 
-	def destroy_line_item(product_id)
-		current_item = line_items.find_by_product_id(product_id)
-		current_item.quantity = 0
-		current_item.destroy		
+	def destroy_line_item(product_id, wishlist_id)
+		LineItem.where(:product_id => product_id, :wishlist_id => wishlist_id).destroy_all
+		puts("destroy_line_item")
+		# current_item = LineItem.find_by_product_id_and_wishlist_id(product_id, wishlist_id)
+		# current_item.quantity = 0
+		# current_item.destroy		
 	end
 
 	def total_price

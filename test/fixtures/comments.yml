@@ -1,16 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   commenter: commentStr1
   body: text should be more than 15 words
   product: MyProduct
 
 two:
+  id: 2
   commenter: commentStr2
   body: and should be less than 2 hundred words
   product: MyProduct
 
 three:
+  id: 3
   commenter: commentStr3
   body: this is for product specified
   product: Lorem Ipsum

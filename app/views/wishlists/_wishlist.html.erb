@@ -7,5 +7,10 @@
 		<td class="total_cell"><%= number_to_currency(wishlist.total_price, :unit=>"￥") %></td>
 	</tr>
 </table>
-<p><%= button_to 'Empty Wishlist', wishlist, method: :delete %></p>
+<section>
+	<p><%= button_to 'Checkout', new_order_path, method: :get %></p>
+	<p><%= button_to 'Empty Wishlist', wishlist, method: :delete %></p>
+	
+</section>
+
 <!-- <p><%= button_to 'Empty Wishlist', wishlist, remote: true, method: :delete %></p> -->
