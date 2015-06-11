@@ -4,14 +4,15 @@
 # add product 1, 2 ,3 to wishlist one and wishlist 2, while both list owns three kind of products, each kind has *one* single line_item(quantity equals to 1)
 one:
   id: 1
-  product_id: 1
+  product: one
   wishlist_id: 1
-  # order: one
+  order: one
 
 two:
   id: 2
-  product_id: 1
+  product: one
   wishlist_id: 2
+  order: one
 
 three:
   id: 3
