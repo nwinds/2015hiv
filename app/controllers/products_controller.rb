@@ -59,16 +59,6 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   # first get the do be destroied product: delete all its comments and then delete the product
   def destroy
-    # delete product's comments
-    # @product.comments.each do |comment|
-    #   begin
-    #     comment.destroy
-    #   rescue ActiveRecord::RecordNotFound
-    #     logger.error "Product failed to destroy. Attempt to access invalid product#{params[:id]} comment#{params[:comment]}"
-    #     redirect_to @product
-    #   end
-    # end
-
     # delete product itself
     respond_to do |format|
       if @product.destroy
@@ -80,6 +70,15 @@ class ProductsController < ApplicationController
       end
     end
   end
+
+  def who_bought
+    @product = Product.find(params[:id])
+    respond_to do |format|
+      format.atom
+      format.xml {render xml: @product}
+    end
+  end
+    
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,9 +1,10 @@
 class Product < ActiveRecord::Base
+  default_scope { order('name') }
   has_many :comments, dependent: :destroy
   has_many :line_items, dependent: :destroy
+  has_many :orders, :through => :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
 
-  default_scope { order('name') }
   validates :name, :presence => true,
   				   :uniqueness => true
   validates :detail, :presence => true

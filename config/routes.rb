@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :wishlists
+  
   get 'store/index'
 
   # match 'line_items', to: 'line_items#edit', via: [:put]
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
 
 
   resources :products do
+    get :who_bought, :on => :member
     resources :comments
       # get 'comments/:id', as: :comments
       match 'comments/:id/edit', to: 'comments#update', via: [:post]
