@@ -38,6 +38,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Rails (>= 3.1) engine which provides html5boilerplate generators and assets
 gem "rails-boilerplate"
 
+# get paging in good way
+gem 'will_paginate', '~> 3.0.6'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
