@@ -57,8 +57,11 @@ class OrdersController < ApplicationController
         Wishlist.destroy(session[:wishlist_id])   # whenever an order created, items should not remains in wishlist
         session[:wishlist_id] = nil
 
+        # send a notifier email
+        Notifier.order_received(@order).deliver
+
         # redirect to store index(cause user may want to do something other than viewing products)
-        format.html { redirect_to store_url, notice: 'Congratulations! Order was successfully created.' }
+        format.html { redirect_to store_url, notice: 'Congratulations! Order was successfully sent.' }
         format.json { render json: @order, status: :created, location: @order }
       else
         format.html { render :new }

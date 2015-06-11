@@ -1,3 +1,5 @@
-Notifier#order_received
-
-<%= @greeting %>, find me in app/views/notifier/order_received.text.erb
+Dear Mr/Mrs <%= @order.name %>
+Thank you for your order from our online recommendation system.
+The order taken from you wishlist is the following items:
+<%= render @order.line_items %>
+We'll remind you whenever the ordered product information is updated.

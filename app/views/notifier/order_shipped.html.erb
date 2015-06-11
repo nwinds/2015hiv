@@ -1,5 +1,13 @@
-<h1>Notifier#order_shipped</h1>
-
+<h1>Order updated notification</h1>
 <p>
-  <%= @greeting %>, find me in app/views/notifier/order_shipped.html.erb
+  <%= @greeting %>, we've recently shipped you order:
 </p>
+<table>
+	<tr><th colspan="2">Qty</th><th>Modification in Detail</th></tr>
+	<%= render @order.item_lines %>
+</table>
+<!-- <tr id="current_item">
+	
+</tr>
+ -->
+<p>Please checkout our website for further info</p>
