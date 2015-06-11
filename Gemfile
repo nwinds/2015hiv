@@ -50,6 +50,14 @@ gem 'will_paginate', '~> 3.0.6'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# The figaro gem makes it so easy to set configuration variables you may find
+#  it useful to set other configuration parameters besides email account 
+#  credentials or private API keys.
+gem 'figaro'
+
+
+
+
 group :development, :test do
 end
 

@@ -38,4 +38,25 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+
+  # ActionMailer Config
+  # configure for mail sending
+  # In development, config.action_mailer.default_url_options is 
+  # set for a host at localhost:3000. If you are sending email 
+  # with Devise, this will enable links in Devise confirmation
+  #  email messages to work properly during development.
+  # 
+  # Email messages are visible in the log file so there is no 
+  # need to send email in development. The configuration above 
+  # will raise delivery errors in development.
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  # change to true to allow email to be sent during development
+  config.action_mailer.perform_deliveries = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+
+
+
 end
