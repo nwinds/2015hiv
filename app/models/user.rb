@@ -1,7 +1,7 @@
 require 'digest/sha2'
 
 class User < ActiveRecord::Base
-	validates :name, :presence => true, :uiniqueness => true
+	validates :name, :presence => true, :uniqueness => true
 	validates :password, :confirmation => true
 	attr_accessor :password_confirmation
 	attr_reader :password
@@ -21,22 +21,9 @@ class User < ActiveRecord::Base
 	end
 
 
-private:
-	def password_must_be_present
-		errors.add(:password, "Password Missing") unless hashed_password.present?
-	end
-
 	# salt's value should be secret
 	def User.encrypt_password(password, salt)
 		Digest::SHA2.hexdigest(password + "wibble" + salt)# what fuck is "wibble"?(haven't heard befor)
-	end
-			
-	# is 'rand' psuedo random function or not(since ruby is wirtten on c's lib)
-	# suspicious
-	# is this ok?(with an string with mac, and remenber it's on salt. something like tag then encrypt)
-	# but since "wibble" seems obviousely in secure(I use the phase 'seems', cause I myself is not sure about it) 
-	def generate_salt
-		self.salt = self.object_id.to_s + rand.to_s
 	end
 
 	def password=(password)
@@ -45,6 +32,21 @@ private:
 			generate_salt
 			self.hashed_password = self.class.encrypt_password(password, salt)
 		end
+	end
+
+
+private
+	def password_must_be_present
+		errors.add(:password, "Password Missing") unless hashed_password.present?
+	end
+
+			
+	# is 'rand' psuedo random function or not(since ruby is wirtten on c's lib)
+	# suspicious
+	# is this ok?(with an string with mac, and remenber it's on salt. something like tag then encrypt)
+	# but since "wibble" seems obviousely in secure(I use the phase 'seems', cause I myself is not sure about it) 
+	def generate_salt
+		self.salt = self.object_id.to_s + rand.to_s
 	end
 			
 		

@@ -189,18 +189,18 @@
 }
 
 /* style for order form */
-.order_form fieldset {
+.general_form fieldset {
   background: #efe;
 }
 
-.order_form legend {
+.general_form legend {
   color: #dfd;
   background: #141;
   font-family: sans-serif;
   padding: 0.2em, 1em;
 }
 
-.order_form label {
+.general_form label {
   width: 5em;
   float: left;
   text-align: right;
@@ -209,14 +209,14 @@
   display: block;
 }
 
-.order_form select, .order_form textarea, .order_form input {
+.general_form select, .general_form textarea, .general_form input {
   margin-left: 0.5em;
 }
 
-.order_form .submit {
+.general_form .submit {
   margin-left: 4em;
 }
 
-.order_form div {
+.general_form div {
   margin: 0.5em 0;
 }
