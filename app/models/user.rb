@@ -1,53 +1,34 @@
 require 'digest/sha2'
 
 class User < ActiveRecord::Base
+	# attr_accessible is ysed to create getter/setter, but here password and def password= are created manualy
+
+	attr_accessor :password
+
+	# class method
+	class << self
+		def encrypt(password, salt)
+			Digest::SHA2.hexdigest(password + "wibble" + salt)# what fuck is "wibble"?(haven't heard befor)
+		end
+	end
+
+	# validation
 	validates :name, :presence => true, :uniqueness => true
 	validates :password, :confirmation => true
-	attr_accessor :password_confirmation
-	attr_reader :password
 
-	# why is validate?
-	# vs php
-	validate :password_must_be_present
 
-	# but isn't it passing the name and password in CLEAN message?!
-	# isn't it sending password and name in plain text?!(but sinece every one does it it *doesn't* matter?!)
-	def User.authenticate(name, password)
-		if user = find_by_name(name)
-			if user.hashed_password == encrypt_password(password, user.salt)
-				user
-			end
+	# callbacks
+	# from stackoverflow: just a callback and every thing is ok(encrypt before CREATEING an user)
+	before_save :encrypt_password
+
+protected
+	def encrypt_password
+		return if password.blank?
+		if new_record?
+			self.salt = Digest::SHA2.hexdigest(password + "wibble" + salt)
 		end
+		self.encrypted_password = User.encrypt(password, salt)
 	end
 
-
-	# salt's value should be secret
-	def User.encrypt_password(password, salt)
-		Digest::SHA2.hexdigest(password + "wibble" + salt)# what fuck is "wibble"?(haven't heard befor)
-	end
-
-	def password=(password)
-		@password = password
-		if password.present?
-			generate_salt
-			self.hashed_password = self.class.encrypt_password(password, salt)
-		end
-	end
-
-
-private
-	def password_must_be_present
-		errors.add(:password, "Password Missing") unless hashed_password.present?
-	end
-
-			
-	# is 'rand' psuedo random function or not(since ruby is wirtten on c's lib)
-	# suspicious
-	# is this ok?(with an string with mac, and remenber it's on salt. something like tag then encrypt)
-	# but since "wibble" seems obviousely in secure(I use the phase 'seems', cause I myself is not sure about it) 
-	def generate_salt
-		self.salt = self.object_id.to_s + rand.to_s
-	end
-			
 		
 end

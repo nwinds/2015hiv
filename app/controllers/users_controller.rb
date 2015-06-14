@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :set_wishlist, only: [:new, :show, :update, :index, :destroy]
+  before_action :set_wishlist, only: [:new, :show, :update, :index, :destroy, :create]
 
   # GET /users
   # GET /users.json
+  # rank by name
   def index
     @users = User.order(:name)
     respond_to do |format|
@@ -46,9 +47,9 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to users_url, notice: 'User #{@user.name} was successfully updated.' }
+        format.json { head :ok }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }

@@ -4,10 +4,15 @@ class ProductsController < ApplicationController
 
   # GET /products
   # GET /products.json
+  # added simple search by one single query
   def index
-    @products = Product.all
-    # set_wishlist()
+    if params[:search]
+      @products = Product.search(params[:search]).order("created_at DESC")
+    else
+      @products = Product.all.order('created_at DESC')
+    end
   end
+
 
   # GET /products/1
   # GET /products/1.json
@@ -78,6 +83,7 @@ class ProductsController < ApplicationController
       format.xml {render xml: @product}
     end
   end
+
     
 
   private

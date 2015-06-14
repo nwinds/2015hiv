@@ -13,6 +13,13 @@ class Product < ActiveRecord::Base
   validates :price, :presence => true,
 					:numericality => {:greater_than_or_equal_to => 0.01}
 
+
+  # simple search by name
+  # try to expant into multiple search on next roll
+  def self.search(query)
+    where("name like ?", "%#{query}%") 
+  end
+
 private
 	# hook method
 	# ensure that there are no line items referencing this product
