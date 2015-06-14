@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+<h1>Welcome</h1>
+	It's <% Time.now %>
+	<!-- is it okay useing section tag with div? -->
+	<section>
+	<div class="order_list">
+		<p>Orders</p>
+		<%= pluralize(@total_orders, "order") %>.		
+	</div>
+	<!-- TODO: add patch raised by visitors(to add in new products in this site through the patch-vote-implement details - confirm) -->
+	
+	</section>
+</body>
+</html>

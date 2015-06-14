@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+<div class="general_form">
+<% if flash[:alert] %>
+	<p id="notice"><% flash[:alert] %></p>	    
+<% end %>
+
+<!-- use form_tag instead of form_for, to make normal html <form> without a model -->
+<%= form_tag do %>
+	<fieldset>
+		<legend>Please Log In</legend>
+		<div>
+			<label for="name">Name:</label>
+			<%= text_field_tag :name, params[:name] %>			
+		</div>
+		<div>
+			<label for="password">Password:</label>
+			<%= password_field_tag :password, params[:password] %>
+		</div>
+		<div>
+			<%= submit_tag "Login" %>
+		</div>
+	</fieldset>
+<% end %>
+</div>
+	
+</body>
+</html>

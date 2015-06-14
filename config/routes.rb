@@ -2,7 +2,22 @@ Rails.application.routes.draw do
 
 
 
+  get 'admin/index', to: 'admin#index'
+
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+  # todo: clean these three routes later
+  # get 'sessions/new'
+  # get 'sessions/create'
+  # get 'sessions/destroy'
+  # 
+
   resources :users
+
   resources :orders
 
   resources :line_items do
@@ -16,6 +31,7 @@ Rails.application.routes.draw do
 
   resources :wishlists
   
+
   get 'store/index'
 
   # match 'line_items', to: 'line_items#edit', via: [:put]
