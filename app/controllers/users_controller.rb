@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :set_wishlist, only: [:new, :show, :update, :index, :destroy, :create]
+  before_action :set_wishlist, only: [:new, :show, :update, :index, :destroy, :create, :edit]
 
   # GET /users
   # GET /users.json
