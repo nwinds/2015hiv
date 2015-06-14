@@ -5,12 +5,19 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   # added simple search by one single query
-  def index
+  # use will_paginate in paging
+  def index 
     if params[:search]
-      @products = Product.search(params[:search]).order("created_at DESC")
+      # @products = Product.order("created_at DESC").search(params[:search].paginate(page: page, per_page: 10)
+      @products = Product.search(params[:search], params[:page])
     else
-      @products = Product.all.order('created_at DESC')
+      @products = Product.paginate(:page => params[:page], :per_page => 10)
     end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json {render json: @products}
+    end
+
   end
 
 
