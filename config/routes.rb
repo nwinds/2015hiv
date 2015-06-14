@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  
+
+
+
   resources :users
   resources :orders
 
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
 
   resources :products do
     get :who_bought, :on => :member
+    # match 'upload', to: 'products#upload', via: [:get]
     resources :comments
       # get 'comments/:id', as: :comments
       match 'comments/:id/edit', to: 'comments#update', via: [:post]

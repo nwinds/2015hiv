@@ -1,3 +1,5 @@
+require 'carrierwave/orm/activerecord'
+
 class Product < ActiveRecord::Base
   default_scope { order('name') }
   has_many :comments, dependent: :destroy
@@ -8,11 +10,12 @@ class Product < ActiveRecord::Base
   validates :name, :presence => true,
   				   :uniqueness => true
   validates :detail, :presence => true
-  validates :icon_url, :presence => true,
-					   :format => {:with => %r{\.(gif|jpe?g|png)\z}i, :message => "must be a URL for GIF, JPG/JPEG or png image.'" }
+  validates :icon_url, :presence => true
+  # ,					   :format => {:with => %r{\.(gif|jpe?g|png)\z}i, :message => "must be a URL for GIF, JPG/JPEG or png image.'" }
   validates :price, :presence => true,
 					:numericality => {:greater_than_or_equal_to => 0.01}
-
+  mount_uploader :avatar, AvatarUploader
+  validate :avatar_size_validation
 
   # simple search by name
   # try to expant into multiple search on next roll
@@ -31,4 +34,9 @@ private
 			return false
 		end		
 	end
+
+
+  def avatar_size_validation
+    errors[:avatar] << "should be less than 0.5MB" if avatar.size > 0.5.megabytes
+  end
 end

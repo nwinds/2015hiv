@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: de2a9550dadf5d71563e933d583ba8c3ad6bb101
+  specs:
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -144,6 +154,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-jdbc-adapter (>= 1.3.0)
   activerecord-jdbcmysql-adapter (>= 1.3.0)
+  carrierwave!
   coffee-rails (~> 4.1.0)
   figaro
   jbuilder (~> 2.0)

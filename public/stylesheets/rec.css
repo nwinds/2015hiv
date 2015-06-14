@@ -52,8 +52,10 @@
 }
 
 #product_list .list_image {
-  width:        60px;
-  height:       70px;
+  border: 1px solid #000;
+  width: 60px;
+  height: 70px;
+  overflow: hidden;
 }
 
 #product_list .list_description {

@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :set_wishlist, only: [:index, :show, :edit, :new]
+  before_action :set_wishlist, only: [:index, :show, :edit, :new, :create]
 
   # GET /products
   # GET /products.json
@@ -40,8 +40,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
-
+    @product = Product.new(upload_params)
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -57,7 +56,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
-      if @product.update(product_params)
+      if @product.update(upload_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -93,14 +92,19 @@ class ProductsController < ApplicationController
 
     
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end   
+private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
+  end   
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def product_params
-      params.require(:product).permit(:name, :detail, :icon_url, :price)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def product_params
+    params.require(:product).permit(:name, :detail, :icon_url, :price)
+  end
+
+  def upload_params
+    params.require(:product).permit(:name, :detail, :icon_url, :price, :avatar)
+  end
+
 end

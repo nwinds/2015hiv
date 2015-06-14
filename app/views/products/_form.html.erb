@@ -27,7 +27,12 @@
     <%= f.label :price %><br>
     <%= f.text_field :price %>
   </div>
-  <div class="actions">
+<div class="field">
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+    <p>图片大小不得超过0.5MB</p>
+</div>
+<div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

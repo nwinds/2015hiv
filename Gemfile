@@ -55,7 +55,11 @@ gem 'will_paginate', '~> 3.0.6'
 #  credentials or private API keys.
 gem 'figaro'
 
-
+# This gem provides a simple and extremely flexible way to upload files from 
+# Ruby applications. It works well with Rack based web applications, such as Ruby on Rails.
+# Multiple file uploads
+# Note: You must specify using the master branch to enable this feature
+gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
 
 group :development, :test do
 end
