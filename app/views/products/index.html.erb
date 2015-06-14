@@ -7,7 +7,7 @@
 
 <section>
   <%= form_tag(products_url, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+    <%= text_field_tag :search, params[:search], placeholder: "full-text search" %>
     <%= submit_tag "Search", :name => nil %> <!-- notice the nil! -->
   <% end %>
 </section>

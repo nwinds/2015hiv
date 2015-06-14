@@ -17,8 +17,7 @@ class Product < ActiveRecord::Base
   # simple search by name
   # try to expant into multiple search on next roll
   def self.search(query, page)
-  	order('name').where('name LIKE ?', "%#{query}%").paginate(page: page, per_page: 10)
-    # where("name like ?", "%#{query}%") 
+	order('created_at DESC').where('name LIKE ?', "%#{query}%").paginate(page: page, per_page: 10)
   end
 
 private
