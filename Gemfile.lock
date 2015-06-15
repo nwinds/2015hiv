@@ -53,6 +53,7 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.0)
     builder (3.2.2)
+    chunky_png (1.3.4)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -75,6 +76,7 @@ GEM
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    jruby-jars (1.7.19)
     json (1.8.3-java)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
@@ -115,6 +117,8 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    rqrcode (0.6.0)
+      chunky_png
     sass (3.4.14)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -147,6 +151,8 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     will_paginate (3.0.7)
+    zxing (0.4.0)
+      jruby-jars
 
 PLATFORMS
   java
@@ -160,8 +166,10 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jdbc-mysql
   jquery-rails
+  jruby-jars (~> 1.7.19)
   rails (= 4.2.1)
   rails-boilerplate
+  rqrcode (~> 0.6.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   therubyrhino
@@ -169,3 +177,4 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   will_paginate (~> 3.0.6)
+  zxing

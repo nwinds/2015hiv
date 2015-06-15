@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :qrcodes
   get 'admin/index', to: 'admin#index'
 
   controller :sessions do

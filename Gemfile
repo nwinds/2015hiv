@@ -50,6 +50,15 @@ gem 'will_paginate', '~> 3.0.6'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# ZXing
+# Decode QR codes (and other 1D/2D barcode formats)
+gem 'jruby-jars', '~> 1.7.19'
+gem 'zxing'
+
+# rQRCode is a library for encoding QR Codes. The simple interface allows you 
+# to create QR Code data structures ready to be displayed in the way you choose.
+gem 'rqrcode', '~> 0.6.0'
+
 # The figaro gem makes it so easy to set configuration variables you may find
 #  it useful to set other configuration parameters besides email account 
 #  credentials or private API keys.

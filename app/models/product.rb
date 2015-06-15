@@ -2,6 +2,7 @@ require 'carrierwave/orm/activerecord'
 
 class Product < ActiveRecord::Base
   default_scope { order('name') }
+  has_one :qrcode, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :line_items, dependent: :destroy
   has_many :orders, :through => :line_items
@@ -10,12 +11,12 @@ class Product < ActiveRecord::Base
   validates :name, :presence => true,
   				   :uniqueness => true
   validates :detail, :presence => true
-  validates :icon_url, :presence => true
-  # ,					   :format => {:with => %r{\.(gif|jpe?g|png)\z}i, :message => "must be a URL for GIF, JPG/JPEG or png image.'" }
   validates :price, :presence => true,
-					:numericality => {:greater_than_or_equal_to => 0.01}
+          :numericality => {:greater_than_or_equal_to => 0.01}
   mount_uploader :avatar, AvatarUploader
   validate :avatar_size_validation
+
+  validates :barcode#, :presence => true
 
   # simple search by name
   # try to expant into multiple search on next roll

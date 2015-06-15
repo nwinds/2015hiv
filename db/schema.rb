@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614092915) do
+ActiveRecord::Schema.define(version: 20150615050431) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "commenter",  limit: 255
@@ -42,11 +42,18 @@ ActiveRecord::Schema.define(version: 20150614092915) do
   create_table "products", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.text     "detail",     limit: 65535
-    t.string   "icon_url",   limit: 255
     t.decimal  "price",                    precision: 8, scale: 2
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
     t.string   "avatar",     limit: 255
+    t.string   "barcode",    limit: 255
+  end
+
+  create_table "qrcodes", force: :cascade do |t|
+    t.integer  "product_id", limit: 4
+    t.binary   "qrcode_img", limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "users", force: :cascade do |t|

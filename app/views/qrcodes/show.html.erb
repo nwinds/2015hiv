@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @qrcode.product_id %>
+</p>
+
+<p>
+  <strong>Qrcode img:</strong>
+  <%= @qrcode.qrcode_img %>
+</p>
+
+<%= link_to 'Edit', edit_qrcode_path(@qrcode) %> |
+<%= link_to 'Back', qrcodes_path %>
