@@ -58,6 +58,9 @@ gem 'zxing'
 # rQRCode is a library for encoding QR Codes. The simple interface allows you 
 # to create QR Code data structures ready to be displayed in the way you choose.
 gem 'rqrcode', '~> 0.6.0'
+gem 'rqrcode_png'
+gem "mini_magick"
+gem 'dragonfly', '~> 1.0.8'
 
 # The figaro gem makes it so easy to set configuration variables you may find
 #  it useful to set other configuration parameters besides email account 

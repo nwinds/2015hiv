@@ -2,6 +2,9 @@ require 'carrierwave/orm/activerecord'
 
 class Product < ActiveRecord::Base
   default_scope { order('name') }
+
+  # dragonfly_accessor :qr_code
+  
   has_one :qrcode, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :line_items, dependent: :destroy
@@ -16,12 +19,12 @@ class Product < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   validate :avatar_size_validation
 
-  validates :barcode#, :presence => true
+  # validates :barcode#, :presence => true
 
   # simple search by name
   # try to expant into multiple search on next roll
   def self.search(query, page)
-	order('created_at DESC').where('name LIKE ?', "%#{query}%").paginate(page: page, per_page: 10)
+  	order('created_at DESC').where('name LIKE ?', "%#{query}%").paginate(page: page, per_page: 10)
   end
 
 private

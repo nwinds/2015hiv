@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :qrcodes
+  
   get 'admin/index', to: 'admin#index'
 
   controller :sessions do
@@ -49,6 +49,13 @@ Rails.application.routes.draw do
 
 
   resources :products do
+    controller :qrcoder do
+      get 'index' => :index
+      post 'encode' => :encode
+      post 'decode' => :decode
+    end
+
+    
     get :who_bought, :on => :member
     # match 'upload', to: 'products#upload', via: [:get]
     resources :comments

@@ -1,3 +1,4 @@
+require 'rqrcode_png'
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_wishlist, only: [:index, :show, :edit, :new, :create]
@@ -41,8 +42,12 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(upload_params)
+
     respond_to do |format|
       if @product.save
+        # qr_code_img = RQRCode::QRCode.new('#{@product}', :size => 4, :level => :h ).to_img
+        # @product.update_attribute :qr_code, qr_code_img.to_string
+        # qrcode exists
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -90,7 +95,9 @@ class ProductsController < ApplicationController
     end
   end
 
-    
+
+
+
 
 private
   # Use callbacks to share common setup or constraints between actions.
