@@ -1,6 +1,8 @@
 require 'carrierwave/orm/activerecord'
+require 'zxing/decodable'
 
 class Product < ActiveRecord::Base
+  include Decodable
   default_scope { order('name') }
 
   # dragonfly_accessor :qr_code
