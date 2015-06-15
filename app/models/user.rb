@@ -12,6 +12,15 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	def User.authenicate(name, password)
+		if user = find_by_name(name)
+			if user.hashed_password == encrypt(password, user.salt)
+				user
+			end
+		end
+	end
+		
+
 	# validation
 	validates :name, :presence => true, :uniqueness => true
 	validates :password, :confirmation => true
