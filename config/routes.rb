@@ -3,6 +3,11 @@ Rails.application.routes.draw do
 
 
   
+  resources :file_managers do
+    collection do
+      post 'search', to: 'file_managers#search'
+    end
+  end
   get 'admin/index', to: 'admin#index'
 
   controller :sessions do

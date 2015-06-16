@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File avatar:</strong>
+  <%= @file_manager.file_avatar.url %>
+</p>
+
+<%= link_to 'Edit', edit_file_manager_path(@file_manager) %> |
+<%= link_to 'Back', file_managers_path %>

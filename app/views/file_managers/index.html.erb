@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<!-- <section> -->
+<%# render 'search' %>
+
+<!-- </section> -->
+
+<h1>Listing File Managers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File avatar</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @file_managers.each do |file_manager| %>
+      <tr>
+      <td><%= link_to products_path(file_manager.product_id) do %>
+  <%= image_tag file_manager.file_avatar.url %>
+<% end %></td>
+        <td><%= link_to 'Show', file_manager %></td>
+        <td><%= link_to 'Edit', edit_file_manager_path(file_manager) %></td>
+        <td><%= link_to 'Destroy', file_manager, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New File manager', new_file_manager_path %>

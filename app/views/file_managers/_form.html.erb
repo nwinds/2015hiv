@@ -1,0 +1,22 @@
+<%= form_for(@file_manager) do |f| %>
+  <% if @file_manager.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@file_manager.errors.count, "error") %> prohibited this file_manager from being saved:</h2>
+
+      <ul>
+      <% @file_manager.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :file_avatar %><br>
+    <%= f.file_field :file_avatar %>
+    <p>图片大小不得超过0.5MB</p>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
