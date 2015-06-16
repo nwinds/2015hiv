@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang>
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
+
 <h1>Listing Line Items</h1>
-</head>
-<body>
-<p id="notice"><%= notice %></p>
-  
 
 <table>
   <thead>
@@ -23,9 +15,9 @@
       <tr>
         <td><%= line_item.product_id %></td>
         <td><%= line_item.wishlist_id %></td>
-        <td><%= link_to 'Show', line_item %></td>
-        <td><%= link_to 'Edit', edit_line_item_path(line_item) %></td>
-        <td><%= link_to 'Destroy', line_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '详细', line_item %></td>
+        <td><%= link_to '编辑', edit_line_item_path(line_item) %></td>
+        <td><%= link_to '删除', line_item, method: :delete, data: { confirm: '确认删除？' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -33,8 +25,4 @@
 
 <br>
 
-<%= link_to 'New Line item', new_line_item_path %>
-
-
-</body>
-</html>
+<%# <%= link_to 'New Line item', new_line_item_path %>

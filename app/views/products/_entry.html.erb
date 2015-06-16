@@ -1,7 +1,7 @@
 <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
       <td>
         <%= link_to line_items_path(:product_id => product), method: :post, remote: true do %>
-        <% image_tag(product.avatar.url, :border => 0, :class => "list_image")  %>
+        <% image_tag(product.avatar.url, :border => 0, :class => "photo_hover3")  %>
         <% end %>
       </td>
       <td class="list_description">
@@ -17,17 +17,13 @@
       </td>
         
         <td class="list_actions">
-          <%= link_to 'Show', product %><br/>
+          <%= link_to '详细', product %><br/>
         </td>
         <td class="list_actions">
-          <%= link_to 'Edit', edit_product_path(product) %><br/>
+          <%= link_to '编辑', edit_product_path(product) %><br/>
         </td>
         <td class="list_actions">
-          <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-        <td>
-          <%= button_to "QREncode", product_encode_path(:product_id => product) %>
-          <%= button_to "QRDecode", product_decode_path(:product_id => product) %>
+          <%= link_to '删除', product, method: :delete, data: { confirm: '确认删除？' } %>
         </td>
         
 

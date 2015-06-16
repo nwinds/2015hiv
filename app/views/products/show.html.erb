@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<p id="notice"><%= notice %></p>
 
-<h1>Product Detail</h1>
+<h1>商品明细</h1>
 
 <div class="product_show">
 <table>
   <thead>
     <tr>
-      <th>Icon url</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
+      <th>图片</th>
+      <th>名称</th>
+      <th>描述</th>
+      <th>价格（单位：元）</th>
       <!-- <th>Action</th> -->
       <th colspan="3"></th>
     </tr>
@@ -24,11 +22,11 @@
 	
 <div class="comment_show">
 <table>
-<caption><h3>Comments List</h3></caption>
+<caption><h3>评论列表</h3></caption>
   <thead>
     <tr>
-      <th>Commenter</th>
-      <th>Body</th>
+      <th>评论人</th>
+      <th>内容</th>
       <th>ProductID</th>
       <th colspan="3"></th>
     </tr>
@@ -43,7 +41,7 @@
 
 <div class="comment_add">
 <table>
-	<caption><h1>New Comment</h1></caption>
+	<caption><h3>New</h3></caption>
 	<tr>
 		<th colspan="1"></th>
 	</tr>
@@ -82,5 +80,5 @@
 	</td>
 </table>
 </div>
-<!-- <%= link_to 'Edit', edit_product_path(@product) %> | -->
-<%= link_to 'Back', products_path %>
+<!-- <%= link_to '编辑', edit_product_path(@product) %> | -->
+<%= link_to '返回', products_path %>

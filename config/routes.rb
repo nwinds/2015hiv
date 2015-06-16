@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
 
-
-
-  
   resources :file_managers do
     collection do
       post 'search', to: 'file_managers#search'
     end
   end
+
+
   get 'admin/index', to: 'admin#index'
 
   controller :sessions do
@@ -16,41 +15,27 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
-  # todo: clean these three routes later
-  # get 'sessions/new'
-  # get 'sessions/create'
-  # get 'sessions/destroy'
-  # 
 
   resources :users
 
+
   resources :orders
+
 
   resources :line_items do
     collection do
-      # delete 'destroy'
       post 'minus_down', to: 'line_items#minus_down'
     end
-    # match 'destroy', to: 'line_items#destroy', via: [:delete]
-    # delete 'destroy', to: 'line_items#destroy'
   end
+
 
   resources :wishlists
   
 
   get 'store/index'
 
-  # match 'line_items', to: 'line_items#edit', via: [:put]
+
   match 'line_items', to: 'line_items#destroy', via: [:delete]
-
-
-# for testing only
-  # resources :comments do
-  #   match 'edit', to: 'comments#update', via: :all
-  #   match '/comments/:id/', to: 'comments#update', via: [:post]
-
-  # end
-
 
 
   resources :products do
@@ -59,15 +44,14 @@ Rails.application.routes.draw do
       post 'encode' => :encode
       post 'decode' => :decode
     end
-
     
     get :who_bought, :on => :member
-    # match 'upload', to: 'products#upload', via: [:get]
+
     resources :comments
-      # get 'comments/:id', as: :comments
       match 'comments/:id/edit', to: 'comments#update', via: [:post]
       match 'comments/:id/', to: 'comments#update', via: [:post]
   end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -31,12 +31,12 @@ class OrdersController < ApplicationController
         format.html { redirect_to products_url, notice: 'You wishlist is empty.' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
-    end
-
-    @order = Order.new
-    respond_to do |format|
-      format.html #{ redirect_to @order, notice: 'Order was successfully created.' }
-      format.json { render :new, status: :created, location: @order }
+    else
+      @order = Order.new
+      respond_to do |format|
+        format.html #{ redirect_to @order, notice: 'Order was successfully created.' }
+        format.json { render :new, status: :created, location: @order }
+      end
     end
 
 

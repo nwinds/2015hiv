@@ -53,12 +53,6 @@ ActiveRecord::Schema.define(version: 20150616023254) do
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
     t.string   "avatar",     limit: 255
-    t.string   "qr_code",    limit: 255
-  end
-
-  create_table "qrcoded_files", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

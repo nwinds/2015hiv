@@ -18,9 +18,9 @@
     <tbody>
       <% @wishlists.each do |wishlist| %>
         <tr>
-          <td><%= link_to 'Show', wishlist %></td>
-          <td><%= link_to 'Edit', edit_wishlist_path(wishlist) %></td>
-          <td><%= link_to 'Destroy', wishlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to '详细', wishlist %></td>
+          <td><%= link_to '编辑', edit_wishlist_path(wishlist) %></td>
+          <td><%= link_to '删除', wishlist, method: :delete, data: { confirm: '确认删除？' } %></td>
         </tr>
       <% end %>
     </tbody>

@@ -1,16 +1,14 @@
-<div class="wishlist_title"><h2>Your Wishlist</h2></div>
+<h2>你的心愿单</h2>
 <table>
 	<%= render(wishlist.line_items) %>
 	<tr class="total_line">
-		<td colspan="2">Total</td>
+		<td colspan="2">共计</td>
 		<!-- use ActiveRecord -->
 		<td class="total_cell"><%= number_to_currency(wishlist.total_price, :unit=>"￥") %></td>
 	</tr>
 </table>
 <section>
-	<p><%= button_to 'Checkout', new_order_path, method: :get %></p>
-	<p><%= button_to 'Empty Wishlist', wishlist, method: :delete %></p>
+	<p><%= button_to '生成订单', new_order_path, method: :get %></p>
+	<p><%= button_to '清空心愿单', wishlist, method: :delete %></p>
 	
 </section>
-
-<!-- <p><%= button_to 'Empty Wishlist', wishlist, remote: true, method: :delete %></p> -->

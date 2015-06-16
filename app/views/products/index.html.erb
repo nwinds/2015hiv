@@ -1,23 +1,19 @@
-<!DOCTYPE html>
 <div class="product_list">
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
-    
 
-<section>
+<div class="search2">
   <%= form_tag(products_url, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "full-text search" %>
-    <%= submit_tag "Search", :name => nil %> <!-- notice the nil! -->
+    <%= text_field_tag :search, params[:search], placeholder: "请输入关键词..." %>
+    <%= submit_tag "搜索", :name => nil %> <!-- notice the nil! -->
   <% end %>
-</section>
-<h1>Listing Products</h1>
+</div>
+ 
+<h1>商品列表</h1>
 <table>
   <thead>
     <tr>
-      <th>Icon url</th>
-      <th>Description</th>
-      <th>Price</th>
+      <th></th>
+      <th></th>
+      <th></th>
       <!-- <th>Action</th> -->
       <th colspan="3"></th>
     </tr>
@@ -31,5 +27,6 @@
 </table>
 </div>
 <br />
-<p>w<%= will_paginate @products %></p>
-<%= link_to 'New Product', new_product_path %>
+
+<p><%= will_paginate @products %></p>
+<%= link_to '添加新商品', new_product_path %>

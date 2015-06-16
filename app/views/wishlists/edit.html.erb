@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Editing Wishlist</title>
-	<h1>Editing Wishlist</h1>
-</head>
-<body>
-  <p id="notice"><%= notice %></p>
+<h1>编辑心愿单</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @wishlist %> |
-<%= link_to 'Back', wishlists_path %>
-	
-</body>
-</html>
+<%= link_to '详细', @wishlist %> |
+<%= link_to '返回', wishlists_path %>
+
 

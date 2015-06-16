@@ -4,12 +4,13 @@
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> 
-<html class="no-js" lang="en"> 
+<!-- <html class="no-js" lang="en">  -->
 <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
+<meta charset="UTF-8">
+<title>超市商品评论系统</title>  
 
-  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+<!-- Use the .htaccess and remove these lines to avoid edge case issues.
        More info: h5bp.com/i/378 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
@@ -23,9 +24,23 @@
 
   <%= stylesheet_link_tag "application" %>
   <!-- My stylesheets -->
-	<%= stylesheet_link_tag   :rec, :media => 'all', 'data-turbolinks-track' => true %>
+	<%# <%= stylesheet_link_tag   :rec, :media => 'all' %>
+  <%= stylesheet_link_tag "styles", :media => 'all' %>
+<%= stylesheet_link_tag "css3.css", :media => 'all' %>
+<!-- think simple template -->
 
-	<!-- My stylesheets END -->
+<link rel="icon" href="images/favicon.gif" type="image/x-icon"/>
+ <!--[if lt IE 9]>
+ <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+<link rel="shortcut icon" href="images/favicon.gif" type="image/x-icon"/> 
+<!-- <link rel="stylesheet" type="text/css" href="css/styles.css"/> -->
+<link type="text/css" href="css/css3.css" rel="stylesheet" />
+
+
+
+  <!-- My stylesheets END -->
   <%= csrf_meta_tags %>
 
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
@@ -34,6 +49,8 @@
        Modernizr enables HTML5 elements & feature detects for optimal performance.
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
   <%= javascript_include_tag 'modernizr' %>
+
+
 
   <!-- Initializes the modernizr and actually perform the checks. Enable this
        if you need the modernizr, but remember to only do the actual checks
@@ -44,43 +61,75 @@
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-
-
-
-
   <!-- Add your site or application content here -->
-	<div id="banner">
-	<!-- TODO: fix it with our logo! -->
-		<%= image_tag("todo.png") %>
-		<%= @page_title || "Product shelf" %>
-	</div>
-	<div id="columns">
-		<div id="side">
-		<div id="wishlist">
-			<%= render @wishlist %>
-		</div>
-		<!-- TODO: fix the link addr -->
-			<a href="#">Home</a><br />
-			<a href="#">F &amp Q</a><br />
-			<a href="#">News</a><br />
-			<a href="#">Contact</a><br />
-		</div>
-		<div id="main">
-			<%= yield %>			
-		</div>
-	</div>  
+<!-- my header -->
+    <header>
+      <!--start logo-->
+          <a href="#" id="logo"><img src="images/logo.png" width="221" height="100" alt="logo"/></a>    
+      <!--end logo-->
+       <!--start intro-->
+       <div id="intro">
+       
+       <hgroup>
+       <h1>WeMark</h1>
+       </hgroup>
+       </div>
+       <!--end intro-->
 
+   <!--start menu-->
+  <nav>
+    <ul>
+  <li><%= link_to '首页', store_url %></li>
+
+  <li><%= link_to '商品列表', controller: 'products' %></li>
+  <li><a href="#">二维码列表</a></li>
+    <li><a href="#">关于网站</a></li>
+    <li><a href="#">联系我们</a></li>
+
+    </ul>
+    </nav>
+  <!--end menu-->
+     <!--end header-->
+  </header>
+
+
+
+         
+    <!-- TODO -->
+
+  <div id="banner">
+    <%= @page_title || "" %>
+  </div>
+  <div id="columns">
+    <div id="side">
+    <div id="wishlist">
+      <%= render @wishlist %>
+    </div>
+    </div>
+
+ 
+  <div id="main">
+  
+  <%= yield %>      
+  </div> 
 
 
 
   <!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
   <!-- My JavaScripts -->
-	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application' %>
+<script type="text/javascript" src=" https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
+  <%= javascript_include_tag 'jquery.pikachoose.js' %>
+<script language="javascript">
+      $(document).ready(
+        function (){
+          $("#pikame").PikaChoose();
+        });
+    </script>
+
+
 	<!-- My JavaScripts END -->
-
-
-
 
 
   <% if Rails.env.production? %>
@@ -93,5 +142,19 @@
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
   <% end %>
+
+
+
+   <!--start footer-->
+   <footer>
+   <div class="container">  
+   <div id="FooterTwo"> © 2015 人机交互课程项目 </div>
+   <div id="FooterTree"> Valid html5, design and code by <a href="http://www.marijazaric.com">marija zaric - creative simplicity</a>   </div> 
+   </div>
+   </footer>
+
+
+
+
 </body>
 </html>

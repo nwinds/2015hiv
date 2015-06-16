@@ -44,17 +44,17 @@
 	<% end %>
 
 	<tr class="total_line">
-		<td colspan="2">Total</td>
+		<td colspan="2">共计</td>
 		<!-- use ActiveRecord -->
 		<td class="total_cell"><%= number_to_currency(@wishlist.total_price, :unit=>"￥") %></td>
 	</tr>
 </table>
-	<p><%= button_to 'Empty Wishlist', @wishlist, method: :delete, data: {:confirm => "Are you sure?\n(Deleting wishlist and all it's belongings?)"} %></p>
+	<p><%= button_to '清空心愿单', @wishlist, method: :delete, data: {:confirm => "确认删除？"} %></p>
 </section>
 	
 <!-- </section> -->
-<%= link_to 'Edit', edit_wishlist_path(@wishlist) %> |
-<%= link_to 'Back', wishlists_path %>
+<%= link_to '编辑', edit_wishlist_path(@wishlist) %> |
+<%= link_to '返回', wishlists_path %>
 	
 </body>
 </html>

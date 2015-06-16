@@ -20,9 +20,9 @@
       <td><%= link_to products_path(file_manager.product_id) do %>
   <%= image_tag file_manager.file_avatar.url %>
 <% end %></td>
-        <td><%= link_to 'Show', file_manager %></td>
-        <td><%= link_to 'Edit', edit_file_manager_path(file_manager) %></td>
-        <td><%= link_to 'Destroy', file_manager, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '详细', file_manager %></td>
+        <td><%= link_to '编辑', edit_file_manager_path(file_manager) %></td>
+        <td><%= link_to '删除', file_manager, method: :delete, data: { confirm: '确认删除？' } %></td>
       </tr>
     <% end %>
   </tbody>
