@@ -20,9 +20,12 @@
 </table>
 </div>
 	
-<div class="comment_show">
+<div class="general_form">
+<fieldset>
+<legend>
+  <h3>评论列表</h3>
+</legend>
 <table>
-<caption><h3>评论列表</h3></caption>
   <thead>
     <tr>
       <th>评论人</th>
@@ -36,16 +39,18 @@
         <%= render :partial => "comments/entry", :locals => { :comment => comment } %>
     <% end %>
   </tbody>
+  
 </table>
+</fieldset>
 </div>
 
 <div class="comment_add">
 <table>
-	<caption><h3>New</h3></caption>
-	<tr>
-		<th colspan="1"></th>
-	</tr>
-	<td>
+  <caption><h3>New</h3></caption>
+  <tr>
+    <th colspan="1"></th>
+  </tr>
+  <td>
 <%= form_for([@product, @product.comments.build]) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
@@ -60,11 +65,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :commenter %><br>
+    <%= f.label :commenter, :value => "评论人" %><br>
     <%= f.text_field :commenter %>
   </div>
   <div class="field">
-    <%= f.label :body %><br>
+    <%= f.label :body, :value => "内容" %><br>
     <%= f.text_area :body %>
   </div>
     <div class="field">

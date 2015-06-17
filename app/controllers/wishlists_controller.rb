@@ -1,4 +1,5 @@
 class WishlistsController < ApplicationController
+  skip_before_filter :authorize, :only => [:create, :update, :destroy]
   before_action :set_wishlist, only: [:show, :edit, :update]
 
   # GET /wishlists

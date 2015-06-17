@@ -1,5 +1,5 @@
 <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-      <td>
+      <td class="list_image">
         <%= link_to line_items_path(:product_id => product), method: :post, remote: true do %>
         <% image_tag(product.avatar.url, :border => 0, :class => "photo_hover3")  %>
         <% end %>
@@ -13,7 +13,7 @@
       <td class="price_line"><span>
       <%= number_to_currency(product.price, :unit=>"￥") %>
       </span>
-      <%= button_to 'Want!', line_items_path(:product_id => product),  remote: true %>
+      <%= button_to '我想要!', line_items_path(:product_id => product),  remote: true %>
       </td>
         
         <td class="list_actions">

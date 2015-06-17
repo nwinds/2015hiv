@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name, :value => "姓名" %><br>
     <%= f.text_field :name, :size => 40 %>
   </div>
   <div class="field">
@@ -20,6 +20,6 @@
     <%= f.email_field :email, :size => 40 %>
   </div>
   <div class="actions">
-    <%= f.submit "Place Order" %>
+    <%= f.submit "发送订单到邮件" %>
   </div>
 <% end %>

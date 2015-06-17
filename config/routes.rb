@@ -39,6 +39,9 @@ Rails.application.routes.draw do
 
 
   resources :products do
+    # collection do
+      match ':id/show', to: 'products#show', via: [:get]
+    # end
     controller :qrcoder do
       get 'index' => :index
       post 'encode' => :encode

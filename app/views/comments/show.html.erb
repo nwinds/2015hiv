@@ -15,5 +15,6 @@
   <%= @comment.product %>
 </p>
 
-<%= link_to '编辑', edit_product_comment_path(@comment.product_id, @comment) %> |
-<%= link_to 'Product index', products_path(@comment.product_id) %>
+<%= link_to '返回', products_path(@product) %> |
+<%= link_to '编辑', edit_product_comment_path(@comment.product_id, @comment) %> | 
+<%= link_to '商品列表首页', products_path(@comment.product_id) %>

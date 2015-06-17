@@ -673,18 +673,25 @@ nav.current{
 	vertical-align: top;
 }
 
-#product_list .list_image {
+/*#product_list .list_image {
 	border: 1px solid #000;
 	width: 60px;
 	height: 70px;
 	overflow: hidden;
 }
-
+*/
 
 
 #product_list .list_description {
 	width:        60%;
 }
+
+#product_list .list_image a img {
+	max-width: 50px;
+	max-height: 50px;
+	overflow:hidden;
+}
+
 
 #product_list .list_description dl {
         margin: 0;
@@ -832,16 +839,23 @@ nav.current{
 	margin-bottom: 10px;
 }
 
+#general_form a img {
+	max-width: 50px;
+	max-height: 50px;
+	overflow:hidden;
+}
 /* style for order form */
 .general_form fieldset {
-	background: #efe;
+	background: #CCCCCC;
 }
 
 .general_form legend {
-	color: #dfd;
-	background: #141;
+	color: #FFCCCC;
+	background: #663366;
 	font-family: sans-serif;
-	padding: 0.2em, 1em;
+	font-size: larger;
+	font-weight: bolder;
+	padding: 0.6em, 1em;
 }
 
 .general_form label {

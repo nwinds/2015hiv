@@ -12,19 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name, :value => "商品名称" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :detail %><br>
+    <%= f.label :detail, :value => "描述" %><br>
     <%= f.text_area :detail %>
   </div>
   <div class="field">
-    <%= f.label :price %><br>
+    <%= f.label :price, :value => "价格" %><br>
     <%= f.text_field :price %>
   </div>
 <div class="field">
-    <%= f.label :avatar %>
+    <%= f.label :avatar, :value => "添加图片 >>" %>
     <%= f.file_field :avatar %>
     <p>图片大小不得超过0.5MB</p>
 </div>

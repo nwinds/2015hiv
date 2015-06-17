@@ -1,5 +1,6 @@
 require 'rqrcode_png'
 class ProductsController < ApplicationController
+  skip_before_filter :authorize, only: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_wishlist, only: [:index, :show, :edit, :new, :create]
 
@@ -25,6 +26,11 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render :show, status: :ok, location: @product }
+    end
+    
     # set_wishlist()
   end
 

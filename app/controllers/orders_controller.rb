@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  skip_before_filter :authorize, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # must this line added every time I add in a model(to make sure wishlist won't cause a crash of the site? horriable)
@@ -14,8 +15,6 @@ class OrdersController < ApplicationController
       format.html # index.html.erb
       format.json {render json: @orders}
     end
-      
-    # @orders = Order.all
   end
 
   # GET /orders/1
@@ -61,7 +60,7 @@ class OrdersController < ApplicationController
         Notifier.order_received(@order).deliver
 
         # redirect to store index(cause user may want to do something other than viewing products)
-        format.html { redirect_to store_url, notice: 'Congratulations! Order was successfully sent.' }
+        format.html { redirect_to products_url, notice: 'Congratulations! Order was successfully sent.' }
         format.json { render json: @order, status: :created, location: @order }
       else
         format.html { render :new }

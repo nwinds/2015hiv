@@ -1,4 +1,4 @@
-<h1>Editing Comment</h1>
+<h3>编辑评论</h3>
 <%= form_for(edit_product_comment_path(@comment.product, @comment), :actions => 'update') do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
@@ -13,27 +13,27 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :commenter %><br>
+    <h3><%= f.label "评论人" %></h3>
 	<%= f.hidden_field :commenter, :value => @comment.commenter %>
-	<p><%= @comment.commenter %><br></p>
+	<p><%= @comment.commenter %><br /></p>
   </div>
   <div class="field">
-    <%= f.label :body %><br>
+    <%= f.label "编辑内容" %><br>
     <%= f.text_area :body, :name => 'body', :value => @comment.body %>
   </div>
     <div class="field">
-    <%= f.label :product_id %><br>
+    <%= f.label "\0" %>
     <%= f.hidden_field :product_id, :value => @comment.product %>
   </div>
   <div class="field">
-		<%= f.label :comment_id %><br>
+		<%= f.label "\0" %>
 	  <%= f.hidden_field :comment_id, :value => @comment %>
   </div>
   <div class="actions">
   <!-- :comment => @comment, -->
-    <%= f.submit %>
+    <%= f.submit "提交修改" %>
   </div>
 <% end %>
 
-<%= link_to 'Show Previous', product_comment_path(@comment.product, @comment) %> |
-<%= link_to 'Back to Belonging', products_path(@product) %>
+<%= link_to '返回', product_comment_path(@comment.product, @comment) %> |
+<%= link_to '回到商品条目', products_path(@product) %>

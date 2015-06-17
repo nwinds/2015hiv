@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<h1>line_items Show</h1>
-</head>
-<body>
-	
+<h1>收藏商品列表</h1>
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Product:</strong>
+  <strong>商品</strong>
   <%= @line_item.product_id %>
 </p>
 
 <p>
-  <strong>Wishlist:</strong>
+  <strong>心愿单</strong>
   <%= @line_item.wishlist_id %>
 </p>
 
 <%= link_to '编辑', edit_line_item_path(@line_item) %> |
 <%= link_to '返回', line_items_path %>
-</body>
-</html>

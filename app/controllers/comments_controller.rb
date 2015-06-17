@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  skip_before_filter :authorize, only: [:index, :show, :new, :edit, :create, :update, :destroy]
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :set_wishlist, only: [:show, :edit, :destroy]
   # GET /comments
