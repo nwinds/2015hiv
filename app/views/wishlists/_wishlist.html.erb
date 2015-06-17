@@ -1,14 +1,23 @@
-<h2>你的心愿单</h2>
 <table>
-	<%= render(wishlist.line_items) %>
-	<tr class="total_line">
-		<td colspan="2">共计</td>
-		<!-- use ActiveRecord -->
-		<td class="total_cell"><%= number_to_currency(wishlist.total_price, :unit=>"￥") %></td>
-	</tr>
+	<caption>你的心愿单</caption>
+	<thead>
+		<tr>
+			<th>header</th>
+		</tr>
+	</thead>
+	<tbody>
+<%= render(wishlist.line_items) %>
+<tr class="total_line">
+	<td colspan="2">共计</td>
+	<!-- use ActiveRecord -->
+	<td class="total_cell"><%= number_to_currency(wishlist.total_price, :unit=>"￥") %></td>
+</tr>
+
+	</tbody>
 </table>
+
 <section>
 	<p><%= button_to '生成订单', new_order_path, method: :get %></p>
 	<p><%= button_to '清空心愿单', wishlist, method: :delete %></p>
-	
 </section>
+	

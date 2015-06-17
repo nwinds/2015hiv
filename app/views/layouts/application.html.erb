@@ -18,8 +18,7 @@
   <meta name="description" content="">
 
   <!-- Mobile viewport optimized: h5bp.com/viewport -->
-  <meta name="viewport" content="width=device-width">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
   <%= stylesheet_link_tag "application" %>
@@ -64,31 +63,65 @@
   <!-- Add your site or application content here -->
 <!-- my header -->
     <header>
-      <!--start logo-->
-          <a href="#" id="logo"><img src="images/logo.png" width="221" height="100" alt="logo"/></a>    
-      <!--end logo-->
+    <table>
+      <tbody>
+        <tr>
+          <td>
+          <!--start logo-->
+              <!-- <a href="#" id="logo"><img src="images/logo.png" width="201" height="90" alt="logo"/></a>     -->
+          <!--end logo-->
+            
+          </td>
+          <td>
        <!--start intro-->
-       <div id="intro">
-       
-       <hgroup>
+       <!-- <div id="intro">        -->
+       <!-- <hgroup> -->
        <h1>WeMark</h1>
-       </hgroup>
-       </div>
+       <!-- </hgroup> -->
+       <!-- </div> -->
        <!--end intro-->
+            
+          </td>
+          <td>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <!--start menu-->
+                  <nav>
+                    <ul>
+                      <li><%= link_to '首页', store_url %></li>
 
-   <!--start menu-->
-  <nav>
-    <ul>
-  <li><%= link_to '首页', store_url %></li>
+                      <li><%= link_to '商品列表', controller: 'products' %></li>
+                      <li><a href="#">二维码列表</a></li>
+                      <li><a href="#">关于网站</a></li>
+                      <li><a href="#">联系我们</a></li>
+                    </ul>
+                  </nav>
+                  <!--end menu-->
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <!-- start search-box -->
+                  <div class="search2">
+                    <%= form_tag(products_url, :method => "get", id: "search-form") do %>
+                      <%= text_field_tag :search, params[:search], placeholder: "请输入关键词..." %>
+                      <%= submit_tag "搜索", :name => nil %> <!-- notice the nil! -->
+                    <% end %>
+                  </div>
+                  <!-- end search-box -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-  <li><%= link_to '商品列表', controller: 'products' %></li>
-  <li><a href="#">二维码列表</a></li>
-    <li><a href="#">关于网站</a></li>
-    <li><a href="#">联系我们</a></li>
 
-    </ul>
-    </nav>
-  <!--end menu-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
      <!--end header-->
   </header>
 

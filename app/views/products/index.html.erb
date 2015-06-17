@@ -1,11 +1,6 @@
 <div class="product_list">
 
-<div class="search2">
-  <%= form_tag(products_url, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "请输入关键词..." %>
-    <%= submit_tag "搜索", :name => nil %> <!-- notice the nil! -->
-  <% end %>
-</div>
+
  
 <h1>商品列表</h1>
 <table>
