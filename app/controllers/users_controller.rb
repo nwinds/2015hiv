@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_filter :authorize, only: [:index, :show, :new, :edit, :create, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_wishlist, only: [:new, :show, :update, :index, :destroy, :create, :edit]
 
@@ -47,7 +48,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update_attributes(user_params)
         format.html { redirect_to users_url, notice: 'User #{@user.name} was successfully updated.' }
         format.json { head :ok }
       else

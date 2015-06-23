@@ -13,10 +13,10 @@ protected
     end
 
     def authorize
-    	unless User.find_by_id(session[:user_id])
-		respond_to do |format|
+    	# unless User.find_by_id(session[:user_id])
+		# respond_to do |format|
 			# if @comment.save
-			format.html { redirect_to login_url, notice: "Login please" }
+			# format.html { redirect_to login_url, notice: "Login please" }
 			# format.json { render :show, status: :created, location: @product }
 			# else
 			# format.html { redirect_to @product, notice: 'Comment failed to create!' }
@@ -25,8 +25,8 @@ protected
 
     		# redirect_to login_url, :notice => "请先登录"
     			
-    		end
-    	end
+    		# end
+    	# end
     end
     	
     	

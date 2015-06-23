@@ -14,22 +14,22 @@
   <% end %>
 
   <fieldset>
-    <legend>Enter User Details</legend>
+    <legend>请键入用户名与密码</legend>
 
   <div>
-    <%= f.label :name %><br>
+    <%= f.label :name, "用户名" %><br>
     <%= f.text_field :name %>
   </div>
   <div>
-    <%= f.label :password, "Password" %><br>
-    <%= f.password_field :password, :size => 40 %>
+    <%= f.label :password, "密\t码" %><br>
+    <%= f.password_field :password %>
   </div>
   <div>
-    <%= f.label :password_confirmation, 'Confirm' %><br>
-    <%= f.password_field :password_confirmation, :size => 40 %>
+    <%= f.label :password_confirmation, '确认密码' %><br>
+    <%= f.password_field :password_confirmation %>
   </div>
   <div>
-    <%= f.submit %>
+    <%= f.submit "创建用户" %>
   </div>
   </fieldset>
 <% end %>

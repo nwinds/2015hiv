@@ -827,13 +827,26 @@ nav.current{
 	font-size: small;
 }
 
-/*Styles for the wishlist in the sidebar*/
+/*Styles for the sidebar*/
+/* wishlist module */
 #wishlist, #wishlist table {
 	font-size: smaller;
 	color: white;
 }
 
 #wishlist table {
+	border-top: 1px dotted #FFCCCC;
+	border-bottom: 1px dotted #FFCCCC;
+	margin-bottom: 10px;
+}
+/* authenicated manage module */
+#manage, #manage table {
+	font-size: smaller;
+	color: white;
+}
+
+
+#manage table {
 	border-top: 1px dotted #FFCCCC;
 	border-bottom: 1px dotted #FFCCCC;
 	margin-bottom: 10px;

@@ -10,7 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+<div class="field">
+    <%= f.label :product_id, value: "商品编号" %><br>
+    <%= f.text_area :product_id %>
+    </div>
   <div class="field">
     <%= f.label :file_avatar %><br>
     <%= f.file_field :file_avatar %>

@@ -108,7 +108,7 @@
                   <div class="search2">
                     <%= form_tag(products_url, :method => "get", id: "search-form") do %>
                       <%= text_field_tag :search, params[:search], placeholder: "请输入关键词..." %>
-                      <%= submit_tag "搜索", :name => nil %> <!-- notice the nil! -->
+                      <%= submit_tag "搜索商品", :name => nil %> <!-- notice the nil! -->
                     <% end %>
                   </div>
                   <!-- end search-box -->
@@ -131,14 +131,34 @@
          
     <!-- TODO -->
 
-  <div id="banner">
-    <%= @page_title || "" %>
-  </div>
+  <!-- <div id="banner"> -->
+    <%# <%= @page_title || "" %>
+  <!-- </div> -->
   <div id="columns">
     <div id="side">
     <div id="wishlist">
       <%= render @wishlist %>
     </div>
+
+    <div id="manage">
+          <br />
+          <table>
+            <tbody>
+      <% if session[:user_id] %>
+              <tr><h3>管理<h3></tr>
+              <tr><%= link_to "订单", orders_path %><tr/>
+              <tr><%= link_to "产品列表", products_path %><tr/>
+              <tr><%= link_to "用户列表", users_path %><br /><tr/>
+              <tr><%= link_to '登出',  logout_path, :method => :delete %></tr>
+      <% else %>
+              <tr><%= link_to "登录", login_path %><tr/>
+      <% end %>
+
+            </tbody>
+          </table>
+      
+    </div>
+
     </div>
 
  
